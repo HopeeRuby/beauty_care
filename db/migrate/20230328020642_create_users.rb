@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :name, default: ''
       t.string :email, default: ''
       t.boolean :active, default: 0
-      t.timestamps  
+      t.timestamps
     end
   end
 end
