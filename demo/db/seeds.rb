@@ -38,3 +38,15 @@ end
     )
   end
 end
+
+10.times do
+  patient = Patient.create(name: Faker::Name.name)
+  physician = Physician.create(name: Faker::Name.name)
+  3.times do
+    Appointment.create(
+      appointment_time: Faker::Time.forward(days: 23, period: :morning),
+      patient: patient,
+      physician: physician
+    )
+  end
+end
