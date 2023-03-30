@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# creat_add_contact_profiles
 class AddContactInfoToProfiles < ActiveRecord::Migration[7.0]
   def change
     add_column :profiles, :email, :string, default: ''
