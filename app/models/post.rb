@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :account
+  
   has_many :images
+  
   validates_associated :images 
   validates :description, length: { minimum: 10 }
   validates :content, :length => {

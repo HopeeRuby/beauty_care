@@ -4,13 +4,13 @@ class Image < ApplicationRecord
 	validates :name_img, presence: true
 
 
-	# after_validation :set_img
+	after_validation :set_img
 
 	private
 
-  # def set_img
-  #   self.img = errors.empty?
-  # end
+  def set_img
+    self.img = errors.empty?
+  end
 
   def validate_name_img
   	p name_img

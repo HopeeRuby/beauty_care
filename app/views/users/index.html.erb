@@ -1,0 +1,22 @@
+<h1 class="text-center" style="color: red;">Users list</h1>
+<div class="col-md-10 col-lg-offset-1">
+  <table class="table text-center" style="border: 2px solid black;">
+    <tr class="bg-primary">
+      <th class="text-center col-md-1">index</th>
+      <th class="text-center col-md-3">Name</th>
+      <th class="text-center col-md-2">Email</th>
+      <th class="text-center col-md-3">Active</th>
+      <th class="text-center col-md-3">Company_id</th>
+    </tr>
+      <% @users.each_with_index do |user, index| %>
+        <tr class="bg-success">
+          <td><%= index %></td>
+          <td scope="row"><%= user.name %></td>
+          <td scope="row"><%= user.email %></td>
+          <td scope="row"><%= user.active %></td>
+          <td scope="row"><%= user.company_id %></td>
+        </tr>
+      <% end %>
+  </table>
+  <%= will_paginate @users %>
+</div>

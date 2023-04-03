@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
+gem "kaminari"
+
+gem "bootstrap-will_paginate", "1.0.0"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
@@ -59,7 +63,6 @@ group :development do
   gem "faker"
   gem "database_cleaner-active_record"
   gem "rubocop"
-
 
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
