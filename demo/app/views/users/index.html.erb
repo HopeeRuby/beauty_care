@@ -1,3 +1,28 @@
 <h1>Welcome to the home page</h1>
-<%= button_to 'Login', 'users/login', method: :get %>
-<%= button_to 'Sign Up', 'users/new', method: :get %>
+
+<h2>Don't have a user?</h2>
+<%= link_to 'New User', new_user_path %>
+
+<h2>Listing Users</h2>
+<table>
+  <thead>
+    <tr>
+	  <th>Name</th>
+	  <th>Email</th>
+	  <th colspan="3"></th>		
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.each do |user|%>
+  	<tr>
+  	  <td><%= user.name %></td>
+  	  <td><%= user.email %></td>
+  	  <td><%= link_to 'Show', user %></td>
+  	  <td><%= link_to 'Edit', edit_user_path(user) %></td>
+  	  <td><%= link_to 'Destroy', user, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
+  	</tr>
+  	<% end %>
+  </tbody>
+</table>
+

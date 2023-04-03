@@ -7,9 +7,9 @@ require 'database_cleaner'
 # DatabaseCleaner.strategy = :truncation
 # DatabaseCleaner.clean
 
-20.times do
+5.times do
   company = Company.create(name: Faker::Name.name, location: Faker::Company.bs)
-  30.times do
+  10.times do
     user = User.create(name: Faker::Name.name, email: Faker::Internet.email, company_id: company.id)
     Profile.create(
       address: Faker::Address.full_address,

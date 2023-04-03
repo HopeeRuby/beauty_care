@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   # POST method
   def create
-    @user = User.create(params.require(:user).permit(:user, :email))
+    # @user = User.create(params.require(:user).permit(:user, :email))
   end
 
   # GET method
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
   # GET method
   def edit
-
   end
 
   # PATCH/ PUT method
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
 
   # GET method
   def show
-    @user = User.where(name: ['Angel Reichert', 'Porfirio Ferry'])
+    # @user = User.where(name: ['Angel Reichert', 'Porfirio Ferry'])
   end
 
   def login
