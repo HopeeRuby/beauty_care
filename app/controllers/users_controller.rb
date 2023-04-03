@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 	# http post
 	def index
-	  @users =User.page(params[:page]).per_page 10
+	  @users = User.all.page(params[:page]).per_page 10
 	end
 
   def show
