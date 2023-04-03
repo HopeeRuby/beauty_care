@@ -1,0 +1,22 @@
+<%= form_with model: @user, url: '/users', method: :post do |form| %>
+  <p>
+    <%= form.label :name %>:
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :email %>:
+    <%= form.text_field :email %>
+  </p>
+  <p>
+    <%= form.label :active %>:
+    <%= form.check_box :active %>
+  </p>
+  <p>
+    <%= form.label :company_id %>:
+    <%= form.collection_select :company_id, Company.all, :id, :name %>
+  </p>
+  <p>
+    <%= form.submit 'Lưu' %>
+  </p>
+<% end %>
+<%= link_to 'Quay lại', users_path %>

@@ -1,0 +1,23 @@
+<h1>Danh sách công ty</h1>
+<%= link_to 'Danh sách người dùng', users_path %>
+</br></br></br>
+<%= link_to 'Thêm mới công ty', new_company_path %>
+</br></br></br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= company.location %></td>
+        <td><%= link_to 'Chi tiết', company_path(company)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,27 @@
+<h1>Danh sách người dùng</h1>
+<%= link_to 'Danh sách công ty', companies_path %>
+</br></br></br>
+<%= link_to 'Thêm mới người dùng', new_user_path %>
+</br></br></br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Active</th>
+      <th>Company</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.active %></td>
+        <td><%= user.company.name %></td>
+        <td><%= link_to 'Chi tiết', user_path(user)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

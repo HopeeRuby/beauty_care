@@ -5,6 +5,8 @@ class User < ApplicationRecord
   belongs_to :company
   has_many :posts, dependent: :destroy
   has_one :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile, update_only: true, allow_destroy: true
+  accepts_nested_attributes_for :posts, allow_destroy: true
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   before_validation :remove_whitespaces

@@ -10,6 +10,7 @@ class Profile < ApplicationRecord
   validates :phone, presence: true
   before_validation :check_name, :check_age
   after_save :check_age_saved
+  before_save :downcase_email
 
   private
 
@@ -25,5 +26,9 @@ class Profile < ApplicationRecord
 
   def check_age_saved
     Rails.logger.info("Age saved successfully: #{age}") if age.present?
+  end
+
+  def downcase_email
+    self.email = email.downcase
   end
 end
