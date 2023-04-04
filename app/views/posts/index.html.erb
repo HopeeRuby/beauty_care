@@ -1,0 +1,40 @@
+
+<h1 class="text-center" style="color: red;">Post list</h1>
+
+<style>
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	th, td {
+		text-align: left;
+		padding: 8px;
+		border: 1px solid;
+	}
+
+	tr:nth-child(even) {
+		background-color: #D6EEEE;
+		border: 1px solid;
+	}
+</style>
+
+<div class="col-md-10 col-lg-offset-1">
+	<table class="table text-center" style="border: 2px solid black;">
+		<tr>
+         <th>id</th>
+         <th>id_post</th>
+         <th>title</th>
+         <th>user_id</th>
+    </tr>
+      <% @posts.all.includes(:user).each_with_index do |post, index| %>
+      <tr>
+      	  <td><%= index %></td>
+          <td><%= post.id %></td>
+          <td><%= post.title %></td>
+          <td><%= post.user_id %></td>
+      </tr>
+      <% end %>
+  </table>
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>

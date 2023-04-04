@@ -1,12 +1,11 @@
 class User < ApplicationRecord
   belongs_to :company
   has_many :posts
-  has_many :accounts
 
   validates :name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
-  validates :name, format: { :multiline => true, with: /^([a-zA-Z\\s]+|[\\p{L}\\s]+)$/ }
-  validates :login, length: (3..8)
+  # validates :name, format: { :multiline => true, with: /^([a-zA-Z\\s]+|[\\p{L}\\s]+)$/ }
+  # validates :login, length: (3..8)
 
 before_validation :downcase_email
 before_save :uppercase_name

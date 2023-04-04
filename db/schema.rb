@@ -10,20 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_02_171708) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_04_044417) do
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "password"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "post_id", null: false
-    t.index ["post_id"], name: "index_accounts_on_post_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.string "location", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,6 +50,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_171708) do
     t.bigint "account_id", null: false
     t.index ["account_id"], name: "index_posts_on_account_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -1,0 +1,16 @@
+<h1>New product</h1>
+
+<style>
+  h1, div {
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+  }
+</style>
+
+<%= render "form", product: @product %>
+
+<br>
+
+<div>
+  <%= link_to "Back to products", products_path %>
+</div>

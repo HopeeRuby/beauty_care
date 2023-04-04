@@ -1,12 +1,10 @@
-class UsersController < ApplicationController
-
+class PostsController < ApplicationController
 	# http post
 	def index
-	  @users = User.all.page(params[:page]).per_page 10
+	  @posts = Post.all.page(params[:page]).per_page 20
 	end
 
   def show
-  	@users = User.find(params[:id])
   end
 
   # http post
@@ -27,7 +25,5 @@ class UsersController < ApplicationController
 
   # http delete
   def destroy
-  	@user = User.find(params[:id])
-  	@user.destroy
   end
 end

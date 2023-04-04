@@ -1,0 +1,40 @@
+
+<style>
+	.title {
+  font-size: 70px;
+  text-align: center;
+  font-weight: bold;
+  color: #BDBDBD;
+}	
+</style>
+
+<div class="container">
+  <div class="row">
+    <h1 class="title">Account</h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-offset-3 col-lg-6">
+      <%= form_for :session, url: login_path do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "Enter your name", class: "form-control" %>  
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, placeholder: "Enter your password", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :user_id %>
+        <%= f.password_field :user_id, placeholder: "Enter your user_id", class: "form-control" %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Register", class: "btn btn-info col-lg-12" %>
+      </div>
+      <div>
+      <%= f.label :post_id %>:<br>
+      <%= f.collection_select :post_id, Post.all, :id %><br><br>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -4,16 +4,16 @@ class Account < ApplicationRecord
 
   validates :name, :password, presence: true
   validates :password, length: (3..8)
-  validates :name, format: { :multiline => true, with: /^([a-zA-Z\\s]+|[\\p{L}\\s]+)$/ }
+  # validates :name, format: { :multiline => true, with: /^([a-zA-Z\\s]+|[\\p{L}\\s]+)$/ }
 
-  before_save :capitalize_name
-  # before_validation :remove_whitespaces
+#   before_save :capitalize_name
+#   # before_validation :remove_whitespaces
 
-private 
+# private 
 
-def capitalize_name
-  self.name = name.capitalize
-end
+# def capitalize_name
+#   self.name = name.capitalize
+# end
 
 # def remove_whitespaces
 #   name.strip!
