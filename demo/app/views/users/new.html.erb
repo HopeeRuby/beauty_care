@@ -3,6 +3,8 @@
   <%= f.label :Name%><br>
   <%= f.text_field :name%><br>
   <%= f.label :Email%><br>
-  <%= f.password_field :email%><br>
+  <%= f.text_field :email%><br>
+  <%= f.label :company_id %>:<br>
+  <%= f.collection_select :company_id, Company.all, :id, :name %><br><br>
   <%= f.submit "Create Your User" %>
 <%end%>

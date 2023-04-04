@@ -1,38 +1,53 @@
 class UsersController < ApplicationController
 
-  # GET method
+  # http GET
   def index
-    @user = User.all
+    @users = User.all.page(params[:page]).per_page 10
   end
 
-  # POST method
-  def create
-    # @user = User.create(params.require(:user).permit(:user, :email))
-  end
-
-  # GET method
+  # http GET
   def new
     @user = User.new
   end
 
-  # GET method
+  # http POST
+  def create
+    @user = User.create(user_params)
+    redirect_to users_path
+  end
+
+  # http GET
   def edit
+    @user = User.find(params[:id])
   end
 
-  # PATCH/ PUT method
+  # http PATCH
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to users_path
   end
 
-  # DELETE method
+  # http DELETE
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    
+    redirect_to users_path
   end
 
-  # GET method
+  # http GET
   def show
-    # @user = User.where(name: ['Angel Reichert', 'Porfirio Ferry'])
+    @user = User.find(params[:id])
   end
 
   def login
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :company_id)
   end
 
 end

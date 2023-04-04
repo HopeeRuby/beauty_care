@@ -3,7 +3,8 @@
 # Setup associations and validations for Post model
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :pictures, :links, dependent: :destroy
+  has_many :pictures, dependent: :destroy
+  has_many :links, dependent: :destroy
 
   validates :content_post, presence: true
   validates :title, length: { maximum: 50 }
