@@ -1,6 +1,12 @@
-<h1>Thông tin người dùng</h1>
-<p>Company: <%= @user.company.name %></p>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-<p>Active: <%= @user.active %></p>
-<%= link_to 'Quay lại', users_path %>
+<div class="container my-5">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title text-center">Thông tin người dùng</h1>
+      <p><strong>Company:</strong> <span class="text-muted"><%= @user.company.name %></span></p>
+      <p><strong>Name:</strong> <span class="text-muted"><%= @user.name %></span></p>
+      <p><strong>Email:</strong> <span class="text-muted"><%= @user.email %></span></p>
+      <p><strong>Active:</strong> <span class="text-muted"><%= @user.active %></span></p>
+      <%= link_to 'Quay lại', users_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

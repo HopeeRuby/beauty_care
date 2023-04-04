@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   # http get
   def index
-    @companies = Company.all
+    @companies = Company.all.page(params[:page]).per_page 10
   end
 
   # http post
@@ -30,6 +30,9 @@ class CompaniesController < ApplicationController
 
   # http delete
   def destroy
+    @company = Company.find(params[:id])
+    @company.destroy
+    redirect_to companies_path
   end
 
   private

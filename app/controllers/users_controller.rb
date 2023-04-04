@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # http get
   def index
-    @users = User.includes(:company).all
+    @users = User.includes(:company).page(params[:page]).per_page 10
   end
 
   # http post
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   # http get
   def edit
+    @user = User.find(params[:id])
   end
 
   # http get
@@ -26,10 +27,19 @@ class UsersController < ApplicationController
 
   # http put/patch
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to users_path
+    else
+      render 'edit'
+    end
   end
 
   # http delete
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path
   end
 
   private

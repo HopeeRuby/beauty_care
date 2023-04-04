@@ -9,6 +9,11 @@ gem "friendly_id"
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem "pagy"
+gem 'will_paginate'
+gem "kaminari"
+gem "bootstrap-will_paginate", "1.0.0"
+gem "will_paginate-bootstrap"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
