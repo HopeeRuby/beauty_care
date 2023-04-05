@@ -1,23 +1,32 @@
 <h1 class="fw-bold d-flex justify-content-center my-5">Danh sách công ty</h1>
 <div class="mb-3">
-  <%= link_to 'Danh sách người dùng', users_path, class: "btn btn-primary" %>
+  <%= link_to 'Danh sách người dùng', users_path %>
 </div>
 <div class="mb-3">
-  <%= link_to 'Thêm mới công ty', new_company_path, class: "btn btn-success" %>
+  <%= link_to 'Danh sách bài viết', posts_path %>
+</div>
+<div class="mb-3">
+  <%= link_to 'Thêm mới công ty', new_company_path %>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>STT</th>
       <th>Name</th>
       <th>Location</th>
+      <th>Created_at</th>
+      <th>Updated_at</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @companies.each do |company| %>
+    <% @companies.each_with_index do |company, index| %>
       <tr>
+        <td><%= create_index params[:page], index, 10 %></td>
         <td><%= company.name %></td>
         <td><%= company.location %></td>
+        <td><%= company.created_at %></td>
+        <td><%= company.updated_at %></td>
         <td class="btn "><%= link_to 'Show', company_path(company), class: 'btn btn-primary'%></td>
         <td class="btn "><%= link_to 'Edit', edit_company_path(company), class: 'btn btn-success'%></td>
         <td class="btn "><%= button_to 'Destroy', company_path(company), method: :delete, class: 'btn btn-danger'%></td>

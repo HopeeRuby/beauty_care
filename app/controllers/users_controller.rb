@@ -7,7 +7,13 @@ class UsersController < ApplicationController
   # http post
   def create
     @user = User.create(user_params)
-    redirect_to users_path
+    if @user.save
+      flash[:success] = "User created successfully"
+      redirect_to users_path
+    else
+      flash.now[:warning] = "Please fill in all required fields"
+      render :new
+    end
   end
 
   # http get
