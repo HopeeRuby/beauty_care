@@ -1,29 +1,33 @@
-<h1 class="text-center" style="color: red;">Users list</h1>
+<h1 class = "text-center" style = "color: red;">Users list</h1>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-success">
+    <%= msg %>
+  </div>
+<% end %>
+
 <p class= "text-center" style></p>
-<div class="text-center"><%= link_to 'New User', new_user_path %></div><br>
+<div class="text-center"><%= link_to 'Sign up your account', new_user_path, class: "btn btn-dark"%></div><br>
 <div class="col-md-10 col-lg-offset-1">
   <table class="table text-center" style="border: 2px solid black;">
     <tr class="bg-primary">
       <th class="text-center col-md-1">Index</th>
       <th class="text-center col-md-3">Name</th>
-      <th class="text-center col-md-2">Email</th>
-      <th class="text-center col-md-3">Show</th>
-      <th class="text-center col-md-3">Edit</th>
-      <th class="text-center col-md-3">Remove</th>
+      <th class="text-center col-md-3">Email</th>
+      <th class="text-center col-md-1">Show</th>
+      <th class="text-center col-md-1">Edit</th>
+      <th class="text-center col-md-1">Remove</th>
     </tr>
       <% @users.each_with_index do |user, index| %>
         <tr class="bg-success">
-          <td><%= index %></td>
+          <td><%= create_index params[:page], index, 10 %></td>
           <td scope="row"><%= user.name %></td>
           <td scope="row"><%= user.email %></td>
-          <td scope="row"><%= link_to 'Show', user %></td>
-          <td scope="row"><%= link_to 'Edit', edit_user_path(user) %></td>
-          <td scope="row"><%= button_to 'Remove', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' } %>
+          <td scope="row"><%= link_to 'Show', user, class: "btn btn-info"%></td>
+          <td scope="row"><%= link_to 'Edit', edit_user_path(user), class: "btn btn-warning"%></td>
+          <td scope="row"><%= button_to 'Remove', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
           </td>
         </tr>
       <% end %>
   </table>
   <%= will_paginate @users %>
 </div>
-
-

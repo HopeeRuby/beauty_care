@@ -1,4 +1,14 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <h1>Sign Up</h1>
+</br>
 <%= form_for @user do |f|%>
   <%= f.label :Name%><br>
   <%= f.text_field :name%><br>

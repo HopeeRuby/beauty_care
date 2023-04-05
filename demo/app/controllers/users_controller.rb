@@ -13,7 +13,13 @@ class UsersController < ApplicationController
   # http POST
   def create
     @user = User.create(user_params)
-    redirect_to users_path
+    if @user.valid?
+      flash[:success] = "Account have been sucessfully created"
+      redirect_to users_path
+    else
+      render :new
+    end  
+
   end
 
   # http GET
@@ -32,7 +38,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    
+    flash[:alert] = "Succesfully destroy user!!!"
     redirect_to users_path
   end
 
