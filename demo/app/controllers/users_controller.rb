@@ -12,12 +12,13 @@ class UsersController < ApplicationController
 
   # http POST
   def create
-    @user = User.create(user_params)
-    if @user.valid?
-      flash[:success] = "Account have been sucessfully created"
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = 'User have been sucessfully created'
       redirect_to users_path
     else
-      render :new
+      flash.now[:error] = 'You could not save user'
+      render action: 'new'
     end  
 
   end
@@ -31,14 +32,20 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_path
+    if @user.save
+      flash[:success] = "User have been successfully updated"
+      redirect_to users_path
+    else
+      flash.now[:error] = "Failed to save user"
+      render action: 'edit'
+    end
   end
 
   # http DELETE
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:alert] = "Succesfully destroy user!!!"
+    flash[:alert] = 'Succesfully destroy user!!!'
     redirect_to users_path
   end
 
