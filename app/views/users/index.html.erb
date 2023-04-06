@@ -1,6 +1,13 @@
-<h1 class="text-center" style="color: red;">Users list</h1>
 
 <style>
+
+	h1 {
+    text-shadow: 2px 2px;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bold;
+    color: #BDBDBD;
+  }
   table {
     border-collapse: collapse;
     width: 100%;
@@ -14,35 +21,48 @@
   tr:nth-child(even) {
     background-color: #D6EEEE;
   }
+  a-primary {
+  	color: black;
+  }
+
+  a-primary {
+  	color: black;
+  }
+
+  button {
+    color: black;
+  }
+
 </style>
+
+<h1>USER</h1>
 
 <div class="col-md-10 col-lg-offset-1">
   <table class="table text-center" style="border: 2px solid black;">
-    <tr>
-        <th>index</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Active</th>
-        <th>Company_id</th>
-        <th>Delete</th>
+  	<tr>
+  		<th>index</th>
+  		<th>Name</th>
+  		<th>Email</th>
+  		<th>Active</th>
+  		<th>Edit</th>
+      <th>Delete</th>
+      <th>Show</th>
     </tr>
       <% @users.each_with_index do |user, index| %>
       <tr>
-        <td><%= index %></td>
+        <td><%= create_index params[:page], index, 10 %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.active %></td>
-        <td><%= user.company_id %></td>
-         <td><%= button_to 'Remove', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' } %></td> 
-
+        <td><%= link_to "<button>Edit</button>".html_safe, edit_user_path(user), class: "a-primary" %></td>
+        <td><%= button_to 'Remove', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' } %></td> 
+        <td><%= link_to "<button>Show</button>".html_safe, user_path(user), class: "a-primary" %></td>
       </tr>
-      <% end %>
+      <% end %>     
   </table>
-  </div> 
-  <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+  <%= link_to "CREATE USER", new_user_path%>
+  <div><%= will_paginate @users, renderer: BootstrapPagination::Rails %></div>
 </div> 
-
-
 
 
 

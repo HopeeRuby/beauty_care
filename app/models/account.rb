@@ -1,9 +1,9 @@
 class Account < ApplicationRecord
-  belongs_to :user
+  # belongs_to :user
   has_many :posts
 
-  validates :name, :password, presence: true
-  validates :password, length: (3..8)
+  # validates :name, :password, presence: true
+  # validates :password, length: (3..8)
   # validates :name, format: { :multiline => true, with: /^([a-zA-Z\\s]+|[\\p{L}\\s]+)$/ }
 
 #   before_save :capitalize_name

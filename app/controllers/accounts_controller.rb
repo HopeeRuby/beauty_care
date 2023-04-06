@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
-	# http post
+
+  # http post
 	def index
 	end
 
@@ -9,11 +10,10 @@ class AccountsController < ApplicationController
   # http post
   def create
   	@account = Account.new account_params
-  	if @account.save
+    if @account.save!
       flash[:success] = "Register success"
-      redirect_to account_path
+      redirect_to accounts_path
     else
-    	flash[:success] = "Register failed"
       render :new
     end
   end
@@ -23,7 +23,7 @@ class AccountsController < ApplicationController
   	@account = Account.new
   end
 
-  # http get
+  # http pget
   def edit
   end
 
@@ -37,6 +37,6 @@ class AccountsController < ApplicationController
 
   private
   	def account_params
-  		account_params.require(:account).permit :name, :password, :user_id, :post_id
+  		params.require(:account).permit :name, :password
   	end
 end
