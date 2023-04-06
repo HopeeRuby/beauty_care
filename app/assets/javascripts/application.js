@@ -2,9 +2,13 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require toastr
 
-$(document).on('turbolinks:load', function() {
+function showAlert() {
+  var alert_Div = document.getElementById("alert")
+  alert_Div.style.display = "block"
   setTimeout(function() {
-    $('.alert').fadeOut('slow');
-  }, 15000); // Thời gian đợi trước khi ẩn thông báo (đơn vị: mili giây)
-});
+    alert_Div.style.display = "none"
+  }, 2000)
+}
+showAlert()

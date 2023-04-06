@@ -1,50 +1,52 @@
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
+<div class="container">
+ <!--  <% flash.each do |type, msg| %>
+    <div id="alert" class="alert alert-info">
+      <%= msg %>
+    </div>
+  <% end %> -->
+  <h1 class="fw-bold d-flex justify-content-center my-5">Danh sách người dùng</h1>
+  <div class="mb-3">
+    <%= link_to 'Danh sách công ty', companies_path %>
   </div>
-<% end %>
-<h1 class="fw-bold d-flex justify-content-center my-5">Danh sách người dùng</h1>
-<div class="mb-3">
-  <%= link_to 'Danh sách công ty', companies_path %>
-</div>
-<div class="mb-3">
-  <%= link_to 'Danh sách bài viết', posts_path %>
-</div>
-<div class="mb-3">
-  <%= link_to 'Thêm mới người dùng', new_user_path %>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>STT</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Active</th>
-      <th>Company</th>
-      <th>Created_at</th>
-      <th>Updated_at</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each_with_index do |user, index| %>
+  <div class="mb-3">
+    <%= link_to 'Danh sách bài viết', posts_path %>
+  </div>
+  <div class="mb-3">
+    <%= link_to 'Thêm mới người dùng', new_user_path %>
+  </div>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= create_index params[:page], index, 10 %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.active %></td>
-        <td><%= user.company.name %></td>
-        <td><%= user.created_at %></td>
-        <td><%= user.updated_at %></td>
-        <td class="btn "><%= link_to 'Show', user_path(user), class: 'btn btn-primary'%></td>
-        <td class="btn "><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-success'%></td>
-        <td class="btn "><%= button_to 'Destroy', user_path(user), method: :delete, class: 'btn btn-danger' %></td>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Active</th>
+        <th>Company</th>
+        <th>Created_at</th>
+        <th>Updated_at</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<div class="d-flex justify-content-center">
-  <nav aria-label="Page navigation">
-    <%= will_paginate @users, class: "pagination" %>
-  </nav>
+    </thead>
+    <tbody>
+      <% @users.each_with_index do |user, index| %>
+        <tr>
+          <td><%= create_index params[:page], index, 10 %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.active %></td>
+          <td><%= user.company.name %></td>
+          <td><%= user.created_at %></td>
+          <td><%= user.updated_at %></td>
+          <td class="btn "><%= link_to 'Show', user_path(user), class: 'btn btn-primary'%></td>
+          <td class="btn "><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-success'%></td>
+          <td class="btn "><%= button_to 'Destroy', user_path(user), method: :delete, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation">
+      <%= will_paginate @users, class: "pagination" %>
+    </nav>
+  </div>
 </div>

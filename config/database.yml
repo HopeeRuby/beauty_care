@@ -14,4 +14,9 @@ development:
   database: project_rails_development
   username: root
   password: Anh@071293
-
+  
+test:
+  <<: *default
+  database: project_rails_development
+  username: root
+  password: Anh@071293

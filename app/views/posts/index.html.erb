@@ -1,43 +1,45 @@
-<h1 class="fw-bold d-flex justify-content-center my-5">Danh sách bài viết</h1>
-<div class="mb-3">
-  <%= link_to 'Danh sách người dùng', users_path %>
-</div>
-<div class="mb-3">
-  <%= link_to 'Danh sách công ty', companies_path %>
-</div>
-<div class="mb-3">
-  <%= link_to 'Thêm mới bài viết', new_post_path %>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>STT</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Author</th>
-      <th>Created_at</th>
-      <th>Updated_at</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each_with_index do |post, index| %>
+<div class="container">
+  <h1 class="fw-bold d-flex justify-content-center my-5">Danh sách bài viết</h1>
+  <div class="mb-3">
+    <%= link_to 'Danh sách người dùng', users_path %>
+  </div>
+  <div class="mb-3">
+    <%= link_to 'Danh sách công ty', companies_path %>
+  </div>
+  <div class="mb-3">
+    <%= link_to 'Thêm mới bài viết', new_post_path %>
+  </div>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= create_index params[:page], index, 10 %></td>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.user.name %></td>
-        <td><%= post.created_at %></td>
-        <td><%= post.updated_at %></td>
-        <td class="btn "><%= link_to 'Show', post_path(post), class: 'btn btn-primary'%></td>
-        <td class="btn "><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-success'%></td>
-        <td class="btn "><%= button_to 'Destroy', post_path(post), method: :delete, class: 'btn btn-danger'%></td>
+        <th>STT</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th>Created_at</th>
+        <th>Updated_at</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<div class="d-flex justify-content-center">
-  <nav aria-label="Page navigation">
-    <%= will_paginate @companies, class: "pagination" %>
-  </nav>
+    </thead>
+    <tbody>
+      <% @posts.each_with_index do |post, index| %>
+        <tr>
+          <td><%= create_index params[:page], index, 10 %></td>
+          <td><%= post.title %></td>
+          <td><%= post.content %></td>
+          <td><%= post.user.name %></td>
+          <td><%= post.created_at %></td>
+          <td><%= post.updated_at %></td>
+          <td class="btn "><%= link_to 'Show', post_path(post), class: 'btn btn-primary'%></td>
+          <td class="btn "><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-success'%></td>
+          <td class="btn "><%= button_to 'Destroy', post_path(post), method: :delete, class: 'btn btn-danger'%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation">
+      <%= will_paginate @companies, class: "pagination" %>
+    </nav>
+  </div>
 </div>

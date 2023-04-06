@@ -12,8 +12,5 @@ require 'faker'
   new_company = Company.create(name: Faker::Company.name, location: Faker::Nation.capital_city)
   2.times do |_user|
     new_user = User.create(name: Faker::Name.name, company_id: new_company.id)
-    2.times do |_post|
-      Post.create(title: Faker::Job.title, content: Faker::Job.field, user_id: new_user.id)
-    end
   end
 end
