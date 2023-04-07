@@ -8,7 +8,7 @@ class CompanyTest < ActiveSupport::TestCase
     company = Company.new(location: "ho chi minh")
     assert_not company.save, "Saved the company without a name"
   end
-
+  
   test "should not save company without location" do
     company = Company.new(name: "ngocanh111")
     assert_not user.save, "Saved the company without an location"

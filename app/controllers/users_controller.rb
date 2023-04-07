@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   # http get
+  def test
+    @user = User.all
+  end
+
   def index
     @users = User.includes(:company).page(params[:page]).per_page 10
   end

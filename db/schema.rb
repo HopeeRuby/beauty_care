@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_04_03_032332) do
   create_table "companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
+    t.string "name", default: ""
+    t.string "location", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "url"
+    t.string "url", default: ""
     t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_032332) do
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "title"
+    t.string "title", default: ""
     t.text "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -41,24 +41,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_032332) do
   end
 
   create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: ""
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
+    t.string "email", default: ""
     t.string "phone", default: ""
-    t.string "address"
-    t.integer "age"
+    t.string "address", default: ""
+    t.integer "age", default: 0
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.boolean "active"
+    t.string "name", default: ""
+    t.string "email", default: ""
+    t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "company_id", null: false
+    t.bigint "company_id", default: 1, null: false
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
