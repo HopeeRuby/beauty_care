@@ -14,13 +14,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'User have been sucessfully created'
+      flash[:errors] = 'User have been sucessfully created'
       redirect_to users_path
     else
-      flash.now[:error] = 'You could not save user'
-      render action: 'new'
+      flash.now[:errors] = 'You could not save user'
+      render :new
     end  
-
   end
 
   # http GET

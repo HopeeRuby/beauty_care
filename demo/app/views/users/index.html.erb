@@ -1,3 +1,4 @@
+<div>
 <h1 class = 'text-center' style = 'color: red;'>Users list</h1>
 <% flash.each do |type, msg| %>
   <div class='alert alert-success'>
@@ -7,8 +8,9 @@
 
 <p class= 'text-center' style></p>
 <div class='text-center'><%= link_to 'Sign up your account', new_user_path, class: 'btn btn-dark'%></div><br>
-<div class='col-md-10 col-lg-offset-1'>
-  <table class='table text-center' style='border: 2px solid black;'>
+<div class="row">
+    <div class="col-md-12">
+      <table class="table text-center">
     <tr class='bg-primary'>
       <th class='text-center col-md-1'>Index</th>
       <th class='text-center col-md-3'>Name</th>
@@ -29,5 +31,7 @@
         </tr>
       <% end %>
   </table>
-  <%= will_paginate @users %>
+</div>
+</div>
+  <%= will_paginate @users, class: 'pagination' %>
 </div>

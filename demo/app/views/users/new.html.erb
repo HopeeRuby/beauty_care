@@ -1,3 +1,8 @@
+  <% flash.each do |type, msg| %>
+    <div id = "alert", class='alert alert-danger'>
+      <%= msg %>
+    </div>
+  <% end %>
 <div class = 'container-fluid'>
   <% if @user.errors.any? %>
     <div class='alert alert-warning' >
@@ -6,11 +11,6 @@
           <li><%= msg %></li>
         <% end %>
       </ul>
-    </div>
-  <% end %>
-  <% flash.each do |type, msg| %>
-    <div class='alert alert-success'>
-      <%= msg %>
     </div>
   <% end %>
 
