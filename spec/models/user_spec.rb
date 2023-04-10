@@ -17,6 +17,12 @@ RSpec.describe User, type: :model do
       user = User.new(name: Faker::Name.name, active: true)
       expect(user).to_not be_valid
     end
+
+    it "is not valid without a company_id" do
+      company = Company.create(name: Faker::Name.name, location: Faker::Nation.capital_city)
+      user = User.new(name: Faker::Name.name, email: Faker::Internet.email, active: true)
+      expect(user).to_not be_valid
+    end
   end
 
   describe "associations" do
