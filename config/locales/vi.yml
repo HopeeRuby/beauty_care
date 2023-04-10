@@ -1,0 +1,10 @@
+vi:
+  errors:
+    format: "%{message}"
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            name:
+              blank: 'tên không được bỏ trống'

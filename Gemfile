@@ -19,8 +19,15 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'will_paginate'
+gem 'will_paginate-bootstrap-style'
+gem 'bootstrap'
+gem 'jquery-rails'
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'faker'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
 

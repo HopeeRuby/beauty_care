@@ -1,0 +1,25 @@
+<% if @product.errors.present? %>
+  <% @product.errors.full_messages.each do |message| %>
+    <div><%= message %><div>
+  <% end %>
+<% end %>
+<%= t('hello.ruby') %>
+<%= form_for @product, url: url, method: method do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, 'Name:', class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description, 'Description:', class: 'form-label' %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :quantity, 'Quantity:', class: 'form-label' %>
+    <%= form.number_field :quantity, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :price, 'Price:', class: 'form-label' %>
+    <%= form.text_field :price, class: 'form-control' %>
+  </div>
+  <%= form.submit method == :post ? 'Create' : 'Update', class: 'btn btn-primary' %>
+<% end %>
