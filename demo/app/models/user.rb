@@ -15,7 +15,7 @@ class User < ApplicationRecord
   # custom validate field
 
   validate :email_with_true_format, if: :fields_not_blank?
-  before_validation :name_downcase_format, :remove_whitespaces
+  before_validation :name_downcase_format, :remove_whitespaces, if: :fields_not_blank?
   before_update :check_email_available
 
   private
@@ -33,8 +33,8 @@ class User < ApplicationRecord
   end
 
   def remove_whitespaces
-    name.strip!
-    email.strip!
+    name.strip! 
+    email.strip! 
   end
 
   def check_email_available
