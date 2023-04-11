@@ -18,6 +18,8 @@ gem "toastr-rails"
 group :development, :test do
   gem 'rspec-rails', '~> 4.1.0'
   gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
+  gem 'factory_bot', '~> 6.2', '>= 6.2.1'
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
