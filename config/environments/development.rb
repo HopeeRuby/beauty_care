@@ -43,7 +43,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  # Set the delivery method 
+  # Set the delivery method
   config.action_mailer.delivery_method = :letter_opener
 
   config.action_mailer.perform_deliveries = true
