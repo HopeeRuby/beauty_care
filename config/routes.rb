@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :admin do
-    # các route cho trang admin
+    # route for admin
     resources :admins
   end
-  namespace :frontend do
-    # các route cho phía frontend
-    resources :users
-  end
+  # route for frontend
+  resources :users
 end
