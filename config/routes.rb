@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :admin do
     # route for admin
-    resources :admins
+    root 'index#index'
   end
   # route for frontend
   resources :users
