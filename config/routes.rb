@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :administrator do
     # route for administrator
     root 'dashboard#index'
-        resources :admins
+    resources :admins
 
   end
   # route for frontend
