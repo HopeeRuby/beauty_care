@@ -3,12 +3,11 @@
 class Admin < ApplicationRecord
   before_save { self.email = email.downcase }
   before_save { self.phone = phone.to_s }
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[^@\s]+@[^@\s]+\z/
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -20,4 +19,8 @@ class Admin < ApplicationRecord
 
   enum status: { active: 0, inactive: 1 }
   enum role: { admin: 0, customer_service: 1 }
+
+  def active_for_authentication?
+    super && active?
+  end
 end

@@ -1,0 +1,58 @@
+# frozen_string_literal: true
+
+module Administrator
+  class AdminsController < Administrator::BaseController
+    before_action :authorize_admin
+    before_action :set_admin, only: %i[show edit update destroy]
+
+    def index
+      @admins = Admin.all
+    end
+
+    def show; end
+
+    def new
+      @admin = Admin.new
+    end
+
+    def edit; end
+
+    def create
+      @admin = Admin.new(admin_params)
+      if @admin.save
+        flash[:success] = I18n.t('flash.admin.success.create')
+        redirect_to administrator_admins_path
+      else
+        render 'new'
+      end
+    end
+
+    def update
+      if @admin.update(admin_params)
+        flash[:success] = I18n.t('flash.admin.success.update')
+        redirect_to administrator_admin_path(@admin)
+      else
+        render 'edit'
+      end
+    end
+
+    def destroy
+      @admin.destroy
+      redirect_to administrator_admins_path
+    end
+
+    private
+
+    def admin_params
+      params.require(:admin).permit(:first_name, :last_name, :email, :password, :phone)
+    end
+
+    def set_admin
+      @admin = Admin.find(params[:id])
+    end
+
+    def authorize_admin
+      authorize current_admin
+    end
+  end
+end

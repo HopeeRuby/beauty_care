@@ -39,9 +39,11 @@
             <li>
               <a href="#">Ecommerce</a>
             </li>
-            <li>
-              <a href="#">Projects</a>
-            </li>
+            <% if defined?(current_admin) && current_admin.admin? %>
+              <li>
+                <%= link_to 'Admins', administrator_admins_path %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </li>

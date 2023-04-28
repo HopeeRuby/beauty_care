@@ -12,8 +12,11 @@ gem 'importmap-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'mysql2'
+gem 'pry'
 gem 'puma', '~> 5.0'
+gem 'pundit'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
+gem 'rails-controller-testing'
 gem 'redis', '~> 4.0'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
