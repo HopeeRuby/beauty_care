@@ -7,6 +7,12 @@
           <div class="d-flex justify-content-between">
             <%= link_to "Add Admins", new_administrator_admin_path, class: "btn btn-danger mb-2 mdi mdi-plus-circle me-2" %>
             <div>
+              <%= form_tag administrator_admins_path, method: :get, class: "form-inline my-2 my-lg-0" do %>
+                <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search by email or phone number", aria: { label: "Search" } %>
+                <%= button_tag "Search", class: "btn btn-outline-success my-2 my-sm-0", type: "submit" %>
+              <% end %>
+            </div>
+            <div>
               <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
               <button type="button" class="btn btn-light mb-2 me-1">Import</button>
               <button type="button" class="btn btn-light mb-2">Export</button>
@@ -63,4 +69,3 @@
     </div>
   </div>
 </div>
-  

@@ -5,21 +5,11 @@ include AuthHelper
 
 RSpec.describe Administrator::AdminsController, type: :controller do
   # admin with role admin
-  let(:admin) { create(:admin) }
+  let(:admin) { create(:admin, role: 'admin', status: 'active') }
   let(:admin_attributes) { attributes_for(:admin) }
 
   # admin with role customer_service
-  let(:admin_customer_service) do
-    Admin.create(
-      id: 10,
-      first_name: 'khoa',
-      last_name: 'vu',
-      phone: '0935167890',
-      status: 'active',
-      role: 'customer_service',
-      email: 'khoa4@gmail.com'
-    )
-  end
+  let(:admin_customer_service) { create(:admin, role: 'customer_service', status: 'active') }
   let(:admin_customer_service_attributes) { attributes_for(:admin_customer_service) }
 
   describe 'GET admins#index' do
@@ -44,8 +34,9 @@ RSpec.describe Administrator::AdminsController, type: :controller do
         sign_in admin_customer_service
       end
 
-      it 'does not render index template' do
-        expect((get :index)).to_not render_template('index')
+      it 'renders access_denied layout' do
+        get :index
+        expect(response).to render_template('layouts/access_denied')
       end
     end
   end
@@ -72,9 +63,9 @@ RSpec.describe Administrator::AdminsController, type: :controller do
         sign_in admin_customer_service
       end
 
-      it 'does not render show template' do
-        # binding.pry
-        expect((get :show, params: { id: admin_customer_service.id })).to_not render_template('show')
+      it 'renders access_denied layout' do
+        get :show, params: { id: admin_customer_service.id }
+        expect(response).to render_template('layouts/access_denied')
       end
     end
   end
@@ -96,8 +87,9 @@ RSpec.describe Administrator::AdminsController, type: :controller do
         sign_in admin_customer_service
       end
 
-      it 'does not render new template' do
-        expect((get :new)).to_not render_template('new')
+      it 'renders access_denied layout' do
+        get :new
+        expect(response).to render_template('layouts/access_denied')
       end
     end
   end
@@ -119,8 +111,9 @@ RSpec.describe Administrator::AdminsController, type: :controller do
         sign_in admin_customer_service
       end
 
-      it 'does not render edit template' do
-        expect((get :edit, params: { id: admin_customer_service.id })).to_not render_template('edit')
+      it 'renders access_denied layout' do
+        get :edit, params: { id: admin_customer_service.id }
+        expect(response).to render_template('layouts/access_denied')
       end
     end
   end
