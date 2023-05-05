@@ -7,12 +7,8 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  VALID_EMAIL_REGEX = /\A[^@\s]+@[^@\s]+\z/
-
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, uniqueness: { case_sensitive: false }
-  validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :phone, presence: true
   validates :phone, length: { is: 10 }
   validates :phone, format: { with: /\A[0-9]+\z/ }
