@@ -6,7 +6,7 @@ module Administrator
     before_action :set_admin, only: %i[show edit update destroy]
 
     def index
-      @admins = Admin.all
+      @admins = Admin.paginate(page: params[:page], per_page: 10)
     end
 
     def show; end
