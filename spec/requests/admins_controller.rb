@@ -5,11 +5,11 @@ include AuthHelper
 
 RSpec.describe Administrator::AdminsController, type: :controller do
   # admin with role admin
-  let(:admin) { create(:admin, role: 'admin', status: 'active') }
-  let(:admin_attributes) { attributes_for(:admin) }
+  let(:admin) { create(:admin, role: 'admin', status: 'active', phone: '1234567890') }
+  let(:admin_attributes) { attributes_for(:admin, phone: '1234567890') }
 
   # admin with role customer_service
-  let(:admin_customer_service) { create(:admin, role: 'customer_service', status: 'active') }
+  let(:admin_customer_service) { create(:admin, role: 'customer_service', status: 'active', phone: '1234567899') }
   let(:admin_customer_service_attributes) { attributes_for(:admin_customer_service) }
 
   describe 'GET admins#index' do
@@ -30,7 +30,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
     end
 
     context 'when login as an customer_service role' do
-      before(:each) do
+        before(:each) do
         sign_in admin_customer_service
       end
 
@@ -125,8 +125,8 @@ RSpec.describe Administrator::AdminsController, type: :controller do
       end
 
       it 'destroys the admin' do
-        admin = create(:admin)
-        expect { delete :destroy, params: { id: admin.id } }.to change(Admin, :count).by(-1)
+        account = create(:admin, phone: '1234567890')
+        expect { delete :destroy, params: { id: account.id } }.to change(Admin, :count).by(-1)
       end
 
       it 'redirects to the admins#index' do
