@@ -30,7 +30,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
     end
 
     context 'when login as an customer_service role' do
-      before(:each) do
+        before(:each) do
         sign_in admin_customer_service
       end
 
