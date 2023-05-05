@@ -6,8 +6,11 @@ module Administrator
     before_action :set_admin, only: %i[show edit update destroy]
 
     def index
-      @admins = Admin.where('email LIKE ? OR phone LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
-                     .page(params[:page]).presence || Admin.paginate(page: params[:page], per_page: 10)
+      @admins = if params[:search].present?
+                  search_admins
+                else
+                  paginate_admins(@admins)
+                end
     end
 
     def show; end
@@ -54,6 +57,16 @@ module Administrator
 
     def authorize_admin
       authorize current_admin
+    end
+
+    def search_admins
+      Admin.where('email LIKE ? OR phone LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
+           .page(params[:page])
+           .paginate(page: params[:page], per_page: 10)
+    end
+
+    def paginate_admins(_admins)
+      Admin.paginate(page: params[:page], per_page: 10)
     end
   end
 end
