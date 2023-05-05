@@ -37,4 +37,17 @@ RSpec.describe Admin, type: :model do
       end
     end
   end
+  describe 'callbacks' do
+    context 'when saving an admin' do
+      let(:admin) { create(:admin, email: 'NGOCANH@GMAIL.COM', phone: 1234567890) }
+
+      it 'downcases the admin email' do
+        expect(admin.email).to eq('ngocanh@gmail.com')
+      end
+
+      it 'converts the admin phone to a string' do
+        expect(admin.phone).to eq('123456789')
+      end
+    end
+  end
 end
