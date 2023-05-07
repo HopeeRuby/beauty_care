@@ -8,6 +8,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     status { ['active', 'inactive'].sample }
     role { ['admin', 'customer_service'].sample }
-    password { Faker::Internet.password(min_length: 6, max_length: 20) }
+    password { Faker::Internet.password(min_length: 6, max_length: 128) }
   end
 end
