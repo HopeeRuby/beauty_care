@@ -2,8 +2,13 @@
 
 module Administrator
   class AdminsController < Administrator::BaseController
+    include BreadcrumbsOnRails::ActionController
+
     before_action :authorize_admin
     before_action :set_admin, only: %i[show edit update destroy]
+
+    add_breadcrumb 'Home', :administrator_root_path
+    add_breadcrumb 'Admins', :administrator_admins_path
 
     def index
       @admins = Admin.all
@@ -14,13 +19,18 @@ module Administrator
       @admins = @admins.paginate(page: params[:page], per_page: 10)
     end
 
-    def show; end
+    def show
+      add_breadcrumb 'Admin informations'
+    end
 
     def new
+      add_breadcrumb 'Add new admin'
       @admin = Admin.new
     end
 
-    def edit; end
+    def edit
+      add_breadcrumb 'Edit admin'
+    end
 
     def create
       @admin = Admin.new(admin_params)
@@ -33,6 +43,7 @@ module Administrator
     end
 
     def update
+      add_breadcrumb 'Edit admin'
       if @admin.update(admin_params)
         flash[:success] = I18n.t('flash.admin.success.update')
         redirect_to administrator_admin_path(@admin)

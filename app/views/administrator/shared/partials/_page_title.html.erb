@@ -2,18 +2,8 @@
   <div class="col-12">
     <div class="page-title-box d-flex align-items-center justify-content-between">
       <h4 class="page-title mb-0 font-weight-bold">Admins</h4>
-      <div>
-        <ol class="breadcrumb m-0 d-flex align-items-center">
-          <li class="breadcrumb-item">
-            <%= link_to 'Hopee', administrator_root_path, class: 'text-decoration-none text-dark bg-transparent small', title: 'Hopee' %>
-          </li>
-          <li class="breadcrumb-item">
-            <%= link_to 'Dashboards', administrator_root_path, class: 'text-decoration-none text-dark bg-transparent small', title: 'Dashboards' %>
-          </li>
-          <li class="breadcrumb-item active">
-            <%= link_to 'Admins', administrator_admins_path, class: 'text-decoration-none text-primary bg-transparent small', title: 'Admins' %>
-          </li>
-        </ol>
+      <div class="breadcrumb m-0 d-flex align-items-center">
+        <%= render_breadcrumbs :separator => '<span class="sep"> > </span>' %>
       </div>
     </div>
   </div>

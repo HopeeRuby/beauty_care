@@ -7,16 +7,15 @@ ruby '3.1.3'
 
 gem 'bootsnap', require: false
 gem 'bootstrap-sass'
+gem 'breadcrumbs_on_rails'
 gem 'devise'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'mysql2'
-gem 'pry'
 gem 'puma', '~> 5.0'
 gem 'pundit'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
-gem 'rails-controller-testing'
 gem 'redis', '~> 4.0'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
@@ -29,6 +28,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 end

@@ -84,6 +84,8 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    breadcrumbs_on_rails (4.1.0)
+      railties (>= 5.0)
     builder (3.2.4)
     capybara (3.39.0)
       addressable
@@ -321,12 +323,12 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   bootstrap-sass
+  breadcrumbs_on_rails
   capybara
   debug
   devise
   factory_bot_rails
   faker
-  i18n
   importmap-rails
   jbuilder
   jquery-rails

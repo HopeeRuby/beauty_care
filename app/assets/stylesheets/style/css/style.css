@@ -1476,7 +1476,7 @@ mark,
      padding-left: 0;
 }
  .form-control-sm {
-     height: calc(2em + 0.5rem + 2px);
+     height: calc(3em + 0.5rem + 2px);
      padding: 0.45rem 0.9rem;
      font-size: 0.875rem;
      line-height: 1.5;
@@ -9299,4 +9299,9 @@ section {
     border-radius: 5px;
     border: 0;
     margin-bottom: 1rem;
+}
+span.sep {
+  display:inline-block;
+  padding:0 5px;
+  color:green;
 }
