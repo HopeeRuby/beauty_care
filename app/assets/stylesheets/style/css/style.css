@@ -171,6 +171,9 @@ figure {
   margin: 0 0 1rem;
 }
 img {
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto;
   vertical-align: middle;
   border-style: none;
 }
@@ -7743,7 +7746,7 @@ button.bg-dark:focus {
          margin-right: 3rem !important;
     }
      .mb-sm-5, .my-sm-5 {
-         margin-bottom: 3rem !important;
+         margin-bottom: -1rem !important;
     }
      .ml-sm-5, .mx-sm-5 {
          margin-left: 3rem !important;
@@ -9065,14 +9068,29 @@ h5,
   cursor: pointer;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-<<<<<<< HEAD
   font-size: 12px;
   padding: 10px 20px;
-=======
-  font-size: 15px;
-  padding: 0.45rem 0.9rem;
->>>>>>> f4027a4137f3b89412133ac3f38ceb39b6280f23
 }
+
+.btn-a {
+  margin-left: auto;
+  margin-right: 82%;
+  display: block;
+  cursor: pointer;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 15px;
+  padding: 9px 33px;
+  -moz-border-radius: 2px;
+  border-radius: 5px;
+}
+
+.btn-a:hover,
+.btn-a:active,
+.btn-a:focus {
+  outline: none;
+}
+
 .btn:hover,
 .btn:active,
 .btn:focus {
@@ -9144,7 +9162,6 @@ h5,
 }
 
 section {
-    padding: 120px 0;
     overflow: hidden;
     background: #fff;
 }
@@ -9193,7 +9210,7 @@ section {
 }
 
 .bg-secondary {
-    background: #15395A !important;
+    background: #153996 !important;
 }
 @media screen and (min-width: 576px){
     .pe-sm-6, .px-sm-6 {
