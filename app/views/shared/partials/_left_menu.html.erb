@@ -1,3 +1,4 @@
+
 <!-- Left sidebar start -->
 <div class="leftside-menu">
   <!-- LOGO -->
@@ -27,23 +28,15 @@
         <i class="uil-home-alt"></i>
         <span> Dashboards </span>
         </a>
-        <div class="collapse" id="sidebarDashboards">
-          <ul class="side-nav-second-level">
-            <% if defined?(current_admin) && current_admin.admin? %>
-            <li>
-              <%= link_to 'Admins', administrator_admins_path %>
-            </li>
-            <% end %>
-          </ul>
-        </div>
+
+      </li>
+      <li class="side-nav-item">
+        <% if defined?(current_admin) && current_admin.admin? %>
+          <%= link_to '<i class="uil-users-alt"></i> '.html_safe + 'Admins', administrator_admins_path, class: 'side-nav-link'%>
+        <% end %>
       </li>
       <li class="side-nav-title side-nav-item">Apps</li>
-      <li class="side-nav-item">
-        <a href="#" class="side-nav-link">
-        <i class="uil-comments-alt"></i>
-        <span> Chat </span>
-        </a>
-      </li>
+      
       <li class="side-nav-item">
         <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
         <i class="uil-store"></i>

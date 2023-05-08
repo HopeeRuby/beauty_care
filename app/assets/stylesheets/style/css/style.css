@@ -135,7 +135,7 @@ body {
      top: -.5em;
 }
  a {
-     color: #007bff;
+     color: #727cf5;
      text-decoration: none;
      background-color: transparent;
 }
@@ -1087,7 +1087,6 @@ mark,
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #212529;
 }
 .table th,
 .table td {
@@ -2031,8 +2030,8 @@ fieldset:disabled a.btn {
 }
 .btn-success {
   color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: #0ACF97;
+  border-color: #24D4A2;
 }
 .btn-success:hover {
   color: #fff;
@@ -2133,13 +2132,13 @@ fieldset:disabled a.btn {
 }
 .btn-danger {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #fa5c7c;
+  border-color: #fa5c7c;
 }
 .btn-danger:hover {
   color: #fff;
-  background-color: #c82333;
-  border-color: #bd2130;
+  background-color: #fa5c7c;
+  border-color: #fa5c7c;
 }
 .btn-danger:focus,
 .btn-danger.focus {
@@ -2149,8 +2148,8 @@ fieldset:disabled a.btn {
 .btn-danger.disabled,
 .btn-danger:disabled {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #fa5c7c;
+  border-color: #fa5c7c;
 }
 .btn-danger:not(:disabled):not(.disabled):active,
 .btn-danger:not(:disabled):not(.disabled).active,
@@ -4276,7 +4275,6 @@ input[type="button"].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
   border-radius: 0.25rem;
 }
 .breadcrumb-item + .breadcrumb-item {
@@ -8801,8 +8799,10 @@ a.text-dark:focus {
   }
 }
 body {
-  font-family: "Lato", Arial, sans-serif;
-  font-size: 16px;
+  font-family: var(--ct-body-font-family);
+  font-size: var(--ct-body-font-size);
+  font-weight: var(--ct-body-font-weight);
+  font-size: 14px;
   line-height: 1.8;
   font-weight: normal;
   background: #f8f9fd;
@@ -8812,7 +8812,7 @@ a {
   -webkit-transition: 0.3s all ease;
   -o-transition: 0.3s all ease;
   transition: 0.3s all ease;
-  color: #01d28e;
+/*  color: #01d28e;*/
 }
 a:hover,
 a:focus {
@@ -8891,7 +8891,7 @@ h5,
   color: gray;
 }
 .form-control {
-  height: 48px;
+  height: 2.5em;
   background: #fff;
   color: #000;
   font-size: 16px;
@@ -8900,6 +8900,17 @@ h5,
   box-shadow: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+.form-c {
+  height: 1em;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  border-radius: 5px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .form-control::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: rgba(0, 0, 0, 0.2) !important;
@@ -9044,7 +9055,7 @@ h5,
   cursor: pointer;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  font-size: 15px;
+  font-size: 12px;
   padding: 10px 20px;
 }
 .btn:hover,
