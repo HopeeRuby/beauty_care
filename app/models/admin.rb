@@ -10,8 +10,7 @@ class Admin < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone, presence: true
-  validates :phone, length: { is: 10 }
-  validates :phone, format: { with: /\A[0-9]+\z/ }
+  validates :phone, format: { with: /\A[0-9+]+\z/ }
 
   enum status: { active: 0, inactive: 1 }
   enum role: { admin: 0, customer_service: 1 }
