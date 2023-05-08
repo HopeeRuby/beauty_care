@@ -7,7 +7,14 @@ module Administrator
 
     def index
       @admins = Admin.all
+<<<<<<< HEAD
       @admins = @admins.where("CONCAT(first_name, '', last_name) LIKE ? OR email LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
+=======
+      if params[:search].present?
+        @admins = @admins.where("CONCAT(first_name, ' ', last_name) LIKE ? OR email LIKE ?",
+                                "%#{params[:search]}%", "%#{params[:search]}%")
+      end
+>>>>>>> 118f6887b2c15f0c31ccb551321e6753604f2cd7
       @admins = @admins.paginate(page: params[:page], per_page: 10)
     end
 
