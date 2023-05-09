@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -46,18 +48,24 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
   version :medium do
     process resize_to_fill: [200, 200]
+    def store_dir
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}/medium"
+    end
   end
 
   version :small do
     process resize_to_fill: [50, 50]
+    def store_dir
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}/small"
+    end
   end
 
-  def extension_allowlist
-    %w(jpg jpeg gif png)
+  def extension_whitelist
+    %w[jpg jpeg gif png]
   end
 
-  def default_url(*args)
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  def default_url
+    ActionController::Base.helpers.asset_path("fallback/#{[version_name, 'default.png'].compact.join('_')}")
   end
 
   def filename
@@ -65,6 +73,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    1..2.megabytes
+    1..(2.megabytes)
   end
 end

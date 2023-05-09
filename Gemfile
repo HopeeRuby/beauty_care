@@ -8,10 +8,12 @@ ruby '3.1.3'
 gem 'bootsnap', require: false
 gem 'bootstrap-sass'
 gem 'breadcrumbs_on_rails'
+gem 'carrierwave'
 gem 'devise'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'mini_magick'
 gem 'mysql2'
 gem 'puma', '~> 5.0'
 gem 'pundit'
@@ -23,8 +25,6 @@ gem 'sass-rails'
 gem 'sprockets-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'will_paginate'
-gem 'carrierwave'
-gem 'mini_magick'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]

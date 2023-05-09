@@ -30,7 +30,6 @@ module Administrator
 
     def edit
       add_breadcrumb 'Edit admin'
-      @ad = current_admin
     end
 
     def create
@@ -65,7 +64,7 @@ module Administrator
     private
 
     def admin_params
-      params.require(:admin).permit(:first_name, :last_name, :email, :password, :phone, :avatar)
+      params.require(:admin).permit(:first_name, :last_name, :email, :password, :phone, :role, :status, :avatar)
     end
 
     def set_admin

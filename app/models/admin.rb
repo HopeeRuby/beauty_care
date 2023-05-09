@@ -24,7 +24,7 @@ class Admin < ApplicationRecord
   def avatar_medium_url
     avatar.url(:medium)
   end
-  
+
   def avatar_small_url
     avatar.url(:small)
   end
