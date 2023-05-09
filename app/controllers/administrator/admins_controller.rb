@@ -30,6 +30,7 @@ module Administrator
 
     def edit
       add_breadcrumb 'Edit admin'
+      @ad = current_admin
     end
 
     def create
@@ -55,6 +56,10 @@ module Administrator
     def destroy
       @admin.destroy
       redirect_to administrator_admins_path
+    end
+
+    def profile
+      @admin = current_admin
     end
 
     private

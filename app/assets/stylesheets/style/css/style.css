@@ -8860,6 +8860,9 @@ h5,
 .bg-primary {
   background: #01d28e !important;
 }
+.bg-primary-a {
+  background: #727cf5 !important;
+}
 .ftco-section {
   padding: 7em 0;
 }
@@ -9305,4 +9308,31 @@ span.sep {
   display:inline-block;
   padding:0 5px;
   color:green;
+}
+
+.btn-b {
+    margin-left: auto;
+    margin-right: 81.5%;
+    display: block;
+    cursor: pointer;
+    box-shadow: none !important;
+    font-size: 15px;
+    padding: 2px 10px;
+    -moz-border-radius: 2px;
+    border-radius: 5px;
+    font-family: var(--ct-btn-font-family);
+    font-size: var(--ct-btn-font-size);
+    font-weight: var(--ct-btn-font-weight);
+    line-height: var(--ct-btn-line-height);
+    color: var(--ct-btn-color);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.card-body-a {
+  margin-bottom: 35px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
 }

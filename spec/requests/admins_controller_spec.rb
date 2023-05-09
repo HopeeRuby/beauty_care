@@ -189,4 +189,8 @@ RSpec.describe Administrator::AdminsController, type: :controller do
       end
     end
   end
+
+  describe 'GET admins#profile' do
+    
+  end
 end
