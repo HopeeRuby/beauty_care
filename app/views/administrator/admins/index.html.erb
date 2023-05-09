@@ -30,6 +30,7 @@
                               <thead>
                                  <tr role="row">
                                     <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 237.8px;" aria-label="STT">Index</th>
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 86.8px;" aria-label="Avatar"></th>
                                     <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 172.8px;" aria-label="FirstName">FirstName</th>
                                     <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 248.8px;" aria-label="LastName">LastName</th>
                                     <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 156.8px;" aria-label="Phone">Phone</th>
@@ -44,6 +45,11 @@
                                  <% @admins.each_with_index do |admin, index| %>
                                  <tr>
                                     <td><%= create_index params[:page], index, 10 %></td>
+                                    <td>
+                                      <% if admin.avatar.present? %>
+                                        <%= image_tag(admin.avatar.url(:small), alt: "Admin", :class => "img_tag me-2 rounded-circle") %>
+                                      <% end %>
+                                    </td>
                                     <td ><%= admin.first_name %></td>
                                     <td ><%= admin.last_name %></td>
                                     <td><%= admin.phone %></td>

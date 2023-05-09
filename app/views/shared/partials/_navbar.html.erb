@@ -103,7 +103,7 @@
       <li class="dropdown notification-list">
          <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
          <span class="account-user-avatar"> 
-         <%= image_tag("users/avatar_1.jpg", alt: "user-image", class: "rounded-circle") %>
+         <%= image_tag(current_admin.avatar.url(:small), alt: "Admin", class: "img_tag rounded-circle") %>
          </span>
          <span>
          <span class="account-user-name"></span>
