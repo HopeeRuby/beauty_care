@@ -71,7 +71,7 @@ module Administrator
 
     def change_password
       @admin = current_admin
-      if @admin.update(password_params)
+      if @admin.update_with_password(password_params)
         redirect_to profile_administrator_admins_path
       else
         render 'edit_password'
@@ -87,7 +87,7 @@ module Administrator
     end
 
     def password_params
-      params.require(:admin).permit(:password, :password_confirmation)
+      params.require(:admin).permit(:current_password, :password, :password_confirmation)
     end
 
     def set_admin

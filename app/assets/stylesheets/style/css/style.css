@@ -9290,42 +9290,90 @@ section {
 }
 
 .card {
-    background: #ffffff;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 0;
-    margin-bottom: 1rem;
+  background: #ffffff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 0;
+  margin-bottom: 1rem;
 }
 span.sep {
-  display:inline-block;
-  padding:0 5px;
-  color:green;
+  display: inline-block;
+  padding: 0 5px;
+  color: green;
 }
 
 .btn-b {
-    margin-left: auto;
-    margin-right: 81.5%;
-    display: block;
-    cursor: pointer;
-    box-shadow: none !important;
-    font-size: 15px;
-    padding: 2px 10px;
-    -moz-border-radius: 2px;
-    border-radius: 5px;
-    font-family: var(--ct-btn-font-family);
-    font-size: var(--ct-btn-font-size);
-    font-weight: var(--ct-btn-font-weight);
-    line-height: var(--ct-btn-line-height);
-    color: var(--ct-btn-color);
-    text-align: center;
-    vertical-align: middle;
+  margin-left: auto;
+  margin-right: 81.5%;
+  display: block;
+  cursor: pointer;
+  box-shadow: none !important;
+  font-size: 15px;
+  padding: 2px 10px;
+  -moz-border-radius: 2px;
+  border-radius: 5px;
+  font-family: var(--ct-btn-font-family);
+  font-size: var(--ct-btn-font-size);
+  font-weight: var(--ct-btn-font-weight);
+  line-height: var(--ct-btn-line-height);
+  color: var(--ct-btn-color);
+  text-align: center;
+  vertical-align: middle;
 }
 
 .card-body-a {
-  margin-bottom: 35px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 1.25rem;
+}
+
+form-a {
+  padding-top: 10px;
+  font-size: 13px;
+  margin-top: 30px;
+}
+
+.login-form {
+  width: 495px;
+  margin: 20px;
+  left: 403px;
+}
+
+.form-group-a {
+  position: relative;
+  z-index: 0;
+  margin-bottom: 20px !important;
+  margin-top: 47px;
+}
+
+.form-group-b {
+  position: relative;
+  z-index: 0;
+  margin-bottom: 20px !important;
+  margin-top: 30px;
+}
+
+.form-group-c {
+  position: relative;
+  z-index: 0;
+  margin-bottom: 20px !important;
+  margin-top: 30px;
+}
+.btn-d {
+  font-size: 18px;
+}
+
+.btn-primary-d {
+  margin-top: 35px;
+  color: #fff;
+  background-color: #7598e5;
+  border-color: #7598e5;
+}
+
+.text-center-d {
+  text-align: center !important;
+  color: #000000a6;
 }

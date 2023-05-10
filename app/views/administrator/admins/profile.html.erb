@@ -17,7 +17,7 @@
                         <div class="row align-items-center">
                            <div class="col-auto">
                               <div class="avatar-lg">
-                                 <%= image_tag(current_admin.avatar.url(:medium), alt: "Admin", class: "img_tag rounded-circle img-thumbnail") %>
+                                 <%= image_tag(current_admin.avatar.url, alt: "Admin", :class => "rounded-circle img-thumbnail") %> 
                               </div>
                            </div>
                            <div class="col">
@@ -30,13 +30,13 @@
                         </div>
                      </div>
                      <!-- end col-->
-                       <div class="col-sm-4">
-                          <div class="text-center mt-sm-0 mt-3 text-sm-end">
-                             <button type="button" class="btn-b btn-light">
-                             <%= link_to "Edit Profile ", edit_admin_registration_path, class: "mdi mdi-account-edit me-1" %>
-                             </button>
-                          </div>
-                       </div>
+                     <div class="col-sm-4">
+                        <div class="text-center mt-sm-0 mt-3 text-sm-end"> 
+                           <button type="button" class="btn-b btn-light">
+                           <%= link_to "Edit Profile ", edit_admin_registration_path, class: "mdi mdi-account-edit me-1" %>
+                           </button>
+                        </div>
+                     </div>
                      <!-- end col-->
                   </div>
                   <!-- end row -->
