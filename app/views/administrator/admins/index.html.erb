@@ -48,6 +48,8 @@
                                     <td>
                                       <% if admin.avatar.present? %>
                                         <%= image_tag(admin.avatar.url(:small), alt: "Admin", :class => "img_tag me-2 rounded-circle") %>
+                                      <% else %>
+                                        <%= image_tag(admin.avatar.default_url(:small), alt: "Admin", :class => "img_tag me-2 rounded-circle") %>
                                       <% end %>
                                     </td>
                                     <td ><%= admin.first_name %></td>

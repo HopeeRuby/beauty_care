@@ -179,7 +179,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
 
       it 'redirects to the admin' do
         put :update, params: { id: admin.id, admin: { first_name: 'Anh' } }
-        expect(response).to redirect_to(administrator_admin_path(admin))
+        expect(response).to redirect_to(profile_administrator_admins_path)
       end
     end
 
