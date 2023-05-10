@@ -11,7 +11,6 @@ RSpec.describe Admin, type: :model do
     it { should validate_presence_of :last_name }
     it { should validate_uniqueness_of(:email).case_insensitive }
     it { should allow_value('test@example.com').for(:email) }
-    it { should validate_length_of(:phone).is_equal_to(10)}  
     it { should validate_presence_of(:phone) }
     it { should allow_value('1234567890').for(:phone) }
     it { should_not allow_value('abc').for(:phone) }

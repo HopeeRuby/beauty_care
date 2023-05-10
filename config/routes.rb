@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     root 'dashboard#index'
     resources :admins do
       get 'profile', on: :collection
+      patch 'change_password', on: :member
+      get 'edit_password', on: :member 
     end
   end
 end

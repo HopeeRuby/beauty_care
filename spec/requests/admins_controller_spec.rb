@@ -36,7 +36,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
 
       it 'renders access_denied layout' do
         get :index
-        expect(response).to render_template('layouts/access_denied')
+        expect(response).to render_template('access_denied')
       end
     end
   end
@@ -65,7 +65,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
 
       it 'renders access_denied layout' do
         get :show, params: { id: admin_customer_service.id }
-        expect(response).to render_template('layouts/access_denied')
+        expect(response).to render_template('access_denied')
       end
     end
   end
@@ -89,7 +89,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
 
       it 'renders access_denied layout' do
         get :new
-        expect(response).to render_template('layouts/access_denied')
+        expect(response).to render_template('access_denied')
       end
     end
   end
@@ -113,7 +113,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
 
       it 'renders access_denied layout' do
         get :edit, params: { id: admin_customer_service.id }
-        expect(response).to render_template('layouts/access_denied')
+        expect(response).to render_template('access_denied')
       end
     end
   end

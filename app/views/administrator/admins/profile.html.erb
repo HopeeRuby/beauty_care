@@ -30,13 +30,13 @@
                         </div>
                      </div>
                      <!-- end col-->
-                     <div class="col-sm-4">
-                        <div class="text-center mt-sm-0 mt-3 text-sm-end">
-                           <button type="button" class="btn-b btn-light">
-                           <%= link_to "Edit Profile ", edit_admin_registration_path, class: "mdi mdi-account-edit me-1" %>
-                           </button>
-                        </div>
-                     </div>
+                       <div class="col-sm-4">
+                          <div class="text-center mt-sm-0 mt-3 text-sm-end">
+                             <button type="button" class="btn-b btn-light">
+                             <%= link_to "Edit Profile ", edit_admin_registration_path, class: "mdi mdi-account-edit me-1" %>
+                             </button>
+                          </div>
+                       </div>
                      <!-- end col-->
                   </div>
                   <!-- end row -->
@@ -61,6 +61,7 @@
                      <p class="text-muted"><strong>Phone :</strong> <span class="ms-2"><%= @admin.phone %></span></p>
                      <p class="text-muted"><strong>Status :</strong> <span class="ms-2"><%= @admin.status %></span></p>
                      <p class="text-muted"><strong>Role :</strong> <span class="ms-2"><%= @admin.role %></span></p>
+                     <p class="text-muted"><strong>Password :</strong> <span class="ms-2"><%= link_to 'Change your password', edit_password_administrator_admin_path(@admin) %></span></p>
                      <p class="text-muted mb-0" id="tooltip-container"><strong>Elsewhere :</strong>
                         <a class="d-inline-block ms-2 text-muted" data-bs-container="#tooltip-container" data-bs-placement="top" data-bs-toggle="tooltip" href="" aria-label="Facebook" data-bs-original-title="Facebook"><i class="mdi mdi-facebook"></i></a>
                         <a class="d-inline-block ms-2 text-muted" data-bs-container="#tooltip-container" data-bs-placement="top" data-bs-toggle="tooltip" href="" aria-label="Twitter" data-bs-original-title="Twitter"><i class="mdi mdi-twitter"></i></a>

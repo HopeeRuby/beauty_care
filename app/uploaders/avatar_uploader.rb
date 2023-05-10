@@ -15,6 +15,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -37,9 +40,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_allowlist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_allowlist
+    %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
@@ -47,7 +50,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
   version :medium do
-    process resize_to_fill: [200, 200]
+    process resize_to_fill: [250, 250]
     def store_dir
       "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}/medium"
     end
@@ -60,16 +63,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
     end
   end
 
-  def extension_whitelist
-    %w[jpg jpeg gif png]
-  end
-
-  def default_url
-    ActionController::Base.helpers.asset_path("fallback/#{[version_name, 'default.png'].compact.join('_')}")
-  end
-
-  def filename
-    @filename ||= CarrierWave::SanitizedFile.sanitize(original_filename) if original_filename
+  def default_url(*args)
+    ActionController::Base.helpers.asset_path("fallback/" + [version_name || :small, 'default.png'].compact.join('_'))
   end
 
   def size_range

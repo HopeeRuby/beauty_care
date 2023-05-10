@@ -30,7 +30,7 @@ class AdminPolicy < ApplicationPolicy
   end
 
   def profile?
-    user == record
+    @user == record
   end
 
   private
