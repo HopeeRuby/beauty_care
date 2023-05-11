@@ -9297,6 +9297,7 @@ section {
   border: 0;
   margin-bottom: 1rem;
 }
+
 span.sep {
   display: inline-block;
   padding: 0 5px;
@@ -9377,6 +9378,7 @@ form-a {
   text-align: center !important;
   color: #000000a6;
 }
+
 .admin-size {
   font-size: 0.9rem;
   padding-top: 1rem ;

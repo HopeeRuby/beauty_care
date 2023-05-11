@@ -44,7 +44,7 @@ RSpec.describe Admin, type: :model do
 
   describe 'callbacks' do
     context 'when saving an admin' do
-      let(:admin) { build(:admin, email: 'hongtham@gmail.com', phone: 1234567890) }
+      let(:admin) { build(:admin, email: 'HONGTHAM@GMAIL.COM', phone: 1234567890) }
       before(:each) do
         admin.save!
       end
