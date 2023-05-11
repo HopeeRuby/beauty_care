@@ -58,8 +58,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
     end
   end
 
-  def default_url(*)
-    ActionController::Base.helpers.asset_path("fallback/#{[version_name || :small, 'default.png'].compact.join('_')}")
+  def default_url(version_name = :small_or_medium)
+    version = version_name == :small_or_medium ? %i[small medium] : version_name
+    ActionController::Base.helpers.asset_path("fallback/#{[version, 'default.png'].flatten.compact.join('_')}")
   end
 
   def size_range

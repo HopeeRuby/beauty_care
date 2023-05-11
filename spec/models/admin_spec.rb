@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'carrierwave/test/matchers'
 
@@ -42,7 +44,7 @@ RSpec.describe Admin, type: :model do
 
   describe 'callbacks' do
     context 'when saving an admin' do
-      let(:admin) { build(:admin, email: 'HONGTHAM@GMAIL.COM', phone: 1234567890) }
+      let(:admin) { build(:admin, email: 'hongtham@gmail.com', phone: 1234567890) }
       before(:each) do
         admin.save!
       end
@@ -101,6 +103,11 @@ RSpec.describe Admin, type: :model do
       end
     end
 
+    context 'the size_range' do
+      it 'should allow files with size up to 2MB' do
+        expect(uploader.size_range).to include(1..(2.megabytes))
+      end
+    end
     context 'the size_range' do
       it 'should allow files with size up to 2MB' do
         expect(uploader.size_range).to include(1..(2.megabytes))

@@ -11,7 +11,11 @@
         <div class="account-settings">
           <div class="user-profile">
             <div class="user-avatar">
-              <%= image_tag(@admin.avatar.url(:medium), alt: "Admin", :class => "img_tag rounded-circle") %>
+              <% if @admin.avatar.present? %>
+                <%= image_tag(@admin.avatar.url(:medium), alt: "Admin", :class => "img_tag rounded-circle img-thumbnail") %>
+              <% else %>
+                <%= image_tag(@admin.avatar.default_url(:medium), alt: "Admin", :class => "img_tag rounded-circle img-thumbnail") %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -76,8 +80,12 @@
         <div class="row gutters">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="text-right">
-              <%= f.submit method == :post ? 'Create' : 'Update', class: "btn btn-primary" %> 
-              <%= link_to "Cancel", profile_administrator_admins_path, class: "btn btn-secondary" %>
+              <%= f.submit method == :post ? 'Create' : 'Update', class: "btn btn-primary" %>
+              <% if current_admin == @admin%>
+                <%= link_to "Cancel", profile_administrator_admins_path, class: "btn btn-secondary" %>
+              <% else %>
+                <%= link_to "Cancel", administrator_admins_path, class: "btn btn-secondary" %>
+              <% end %>
             </div>
           </div>
         </div>

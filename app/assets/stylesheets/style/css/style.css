@@ -8847,8 +8847,8 @@ h5,
 .h5 {
   line-height: 1.5;
   font-weight: 400;
-  font-family: "Lato", Arial, sans-serif;
-  color: #000;
+  font-family: var(--ct-body-font-family);
+  color: #6c757d;;
 }
 .bg-primary {
   background: #01d28e !important;
@@ -9305,7 +9305,7 @@ span.sep {
 
 .btn-b {
   margin-left: auto;
-  margin-right: 81.5%;
+  margin-right: 83.5%;
   display: block;
   cursor: pointer;
   box-shadow: none !important;
@@ -9376,4 +9376,8 @@ form-a {
 .text-center-d {
   text-align: center !important;
   color: #000000a6;
+}
+.admin-size {
+  font-size: 0.9rem;
+  padding-top: 1rem ;
 }

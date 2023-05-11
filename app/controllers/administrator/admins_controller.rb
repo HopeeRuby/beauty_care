@@ -72,7 +72,8 @@ module Administrator
     def change_password
       @admin = current_admin
       if @admin.update_with_password(password_params)
-        redirect_to profile_administrator_admins_path
+        flash[:success] = I18n.t('flash.admin.success.update_password')
+        redirect_to new_admin_session_path
       else
         render 'edit_password'
       end

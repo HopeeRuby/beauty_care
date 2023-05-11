@@ -1,92 +1,96 @@
 <div class="container-fluid">
-   <div class="row">
-      <div class="col-12">
-         <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="page-title mb-0 font-weight-bold">Profile</h4>
-         </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-flex align-items-center justify-content-between">
+        <h4 class="page-title mb-0 font-weight-bold">Profile</h4>
       </div>
-   </div>
-   <div>
-      <div class="row">
-         <div class="col-sm-12">
-            <!-- Profile -->
-            <div class="card bg-primary-a">
-               <div class="card-body profile-user-box">
-                  <div class="row">
-                     <div class="col-sm-8">
-                        <div class="row align-items-center">
-                           <div class="col-auto">
-                              <div class="avatar-lg">
-                                 <%= image_tag(current_admin.avatar.url, alt: "Admin", :class => "rounded-circle img-thumbnail") %> 
-                              </div>
-                           </div>
-                           <div class="col">
-                              <div>
-                                 <h4 class="mt-1 mb-1 text-white"><%= "#{@admin.first_name}" + " " + "#{@admin.last_name}" %></h4>
-                                 <p class="font-13 text-white-50"> <%= @admin.email %></p>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- end col-->
-                     <div class="col-sm-4">
-                        <div class="text-center mt-sm-0 mt-3 text-sm-end"> 
-                           <button type="button" class="btn-b btn-light">
-                           <%= link_to "Edit Profile ", edit_admin_registration_path, class: "mdi mdi-account-edit me-1" %>
-                           </button>
-                        </div>
-                     </div>
-                     <!-- end col-->
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- Profile -->
+        <div class="card bg-primary-a">
+          <div class="card-body profile-user-box">
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <div class="avatar-lg">
+                      <% if current_admin.avatar.present? %>
+                      <%= image_tag(current_admin.avatar.url(:medium), alt: "Admin", :class => "img_tag me-2 rounded-circle img-thumbnail") %>
+                      <% else %>
+                      <%= image_tag(current_admin.avatar.default_url(:medium), alt: "Admin", :class => "img_tag me-2 rounded-circle img-thumbnail") %>
+                      <% end %>
+                    </div>
                   </div>
-                  <!-- end row -->
-               </div>
-               <!-- end card-body/ profile-user-box-->
+                  <div class="col">
+                    <div>
+                      <h4 class="mt-1 mb-1 text-white"><%= "#{@admin.first_name}" + " " + "#{@admin.last_name}" %></h4>
+                      <p class="font-13 text-white-50"> <%= @admin.email %></p>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end col-->
+              <div class="col-sm-4">
+                <div class="text-center mt-sm-0 mt-3 text-sm-end"> 
+                  <button type="button" class="btn-b btn-light">
+                  <%= link_to "Edit Profile ", edit_admin_registration_path, class: "mdi mdi-account-edit me-1" %>
+                  </button>
+                </div>
+              </div>
+              <!-- end col-->
             </div>
-            <!--end profile/ card -->
-         </div>
-         <!-- end col-->
+            <!-- end row -->
+          </div>
+          <!-- end card-body/ profile-user-box-->
+        </div>
+        <!--end profile/ card -->
       </div>
-      <div class="row">
-         <div class="col-xl-4">
-            <!-- Personal-Information -->
-            <div class="card">
-               <div class="card-body">
-                  <h4 class="header-title mt-0 mb-3">Information</h4>
-                  <hr>
-                  <div class="text-start">
-                     <p class="text-muted"><strong>Full Name :</strong> <span class="ms-2"><%= @admin.first_name %></span></p>
-                     <p class="text-muted"><strong>Last Name :</strong><span class="ms-2"><%= @admin.last_name %></span></p>
-                     <p class="text-muted"><strong>Email :</strong> <span class="ms-2"><%= @admin.email %></span></p>
-                     <p class="text-muted"><strong>Phone :</strong> <span class="ms-2"><%= @admin.phone %></span></p>
-                     <p class="text-muted"><strong>Status :</strong> <span class="ms-2"><%= @admin.status %></span></p>
-                     <p class="text-muted"><strong>Role :</strong> <span class="ms-2"><%= @admin.role %></span></p>
-                     <p class="text-muted"><strong>Password :</strong> <span class="ms-2"><%= link_to 'Change your password', edit_password_administrator_admin_path(@admin) %></span></p>
-                     <p class="text-muted mb-0" id="tooltip-container"><strong>Elsewhere :</strong>
-                        <a class="d-inline-block ms-2 text-muted" data-bs-container="#tooltip-container" data-bs-placement="top" data-bs-toggle="tooltip" href="" aria-label="Facebook" data-bs-original-title="Facebook"><i class="mdi mdi-facebook"></i></a>
-                        <a class="d-inline-block ms-2 text-muted" data-bs-container="#tooltip-container" data-bs-placement="top" data-bs-toggle="tooltip" href="" aria-label="Twitter" data-bs-original-title="Twitter"><i class="mdi mdi-twitter"></i></a>
-                        <a class="d-inline-block ms-2 text-muted" data-bs-container="#tooltip-container" data-bs-placement="top" data-bs-toggle="tooltip" href="" aria-label="Skype" data-bs-original-title="Skype"><i class="mdi mdi-skype"></i></a>
-                     </p>
-                  </div>
-               </div>
+      <!-- end col-->
+    </div>
+    <div class="row">
+      <div class="col-xl-4">
+        <!-- Personal-Information -->
+        <div class="card">
+          <div class="card-body">
+            <h4 class="header-title mt-0 mb-3">Information</h4>
+            <hr>
+            <div class="text-start">
+              <p class="text-muted"><strong>First Name :</strong> <span class="ms-2"><%= @admin.first_name %></span></p>
+              <p class="text-muted"><strong>Last Name :</strong><span class="ms-2"><%= @admin.last_name %></span></p>
+              <p class="text-muted"><strong>Email :</strong> <span class="ms-2"><%= @admin.email %></span></p>
+              <p class="text-muted"><strong>Phone :</strong> <span class="ms-2"><%= @admin.phone %></span></p>
+              <p class="text-muted"><strong>Status :</strong> <span class="ms-2"><%= @admin.status %></span></p>
+              <p class="text-muted"><strong>Role :</strong> <span class="ms-2"><%= @admin.role %></span></p>
+              <p class="text-muted"><strong>Password :</strong> <span class="ms-2"><%= link_to 'Change your password', edit_password_administrator_admin_path(@admin) %></span></p>
+              <p class="text-muted mb-0" id="tooltip-container"><strong>Elsewhere :</strong>
+                <a class="d-inline-block ms-2 text-muted" data-bs-container="#tooltip-container" data-bs-placement="top" data-bs-toggle="tooltip" href="" aria-label="Facebook" data-bs-original-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                <a class="d-inline-block ms-2 text-muted" data-bs-container="#tooltip-container" data-bs-placement="top" data-bs-toggle="tooltip" href="" aria-label="Twitter" data-bs-original-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                <a class="d-inline-block ms-2 text-muted" data-bs-container="#tooltip-container" data-bs-placement="top" data-bs-toggle="tooltip" href="" aria-label="Skype" data-bs-original-title="Skype"><i class="mdi mdi-skype"></i></a>
+              </p>
             </div>
-         </div>
-         <!-- end col-->
-         <div class="col-xl-8">
-            <!-- Chart-->
-            <div class="card">
-               <div class="card-body-a">
-                  <h4 class="header-title mb-3">Orders &amp; Revenue</h4>
-                  <div dir="ltr">
-                     <div style="height: 260px;" class="chartjs-chart">
-                        <canvas id="high-performing-product" width="959.328" height="260" style="display: block; box-sizing: border-box; height: 260px; width: 959px;"></canvas>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- End Chart-->
-         </div>
-         <!-- end col -->
+          </div>
+        </div>
       </div>
-   </div>
+      <!-- end col-->
+      <div class="col-xl-8">
+        <!-- Chart-->
+        <div class="card">
+          <div class="card-body-a">
+            <h4 class="header-title mb-3">Orders &amp; Revenue</h4>
+            <div dir="ltr">
+              <div style="height: 260px;" class="chartjs-chart">
+                <canvas id="high-performing-product" width="959.328" height="260" style="display: block; box-sizing: border-box; height: 260px; width: 959px;"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Chart-->
+      </div>
+      <!-- end col -->
+    </div>
+  </div>
 </div>

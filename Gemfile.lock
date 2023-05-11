@@ -351,6 +351,7 @@ DEPENDENCIES
   letter_opener
   letter_opener_web
   mini_magick
+  minitest
   mysql2
   pry
   puma (~> 5.0)
