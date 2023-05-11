@@ -29,6 +29,10 @@ class AdminPolicy < ApplicationPolicy
     can_manage_admin?
   end
 
+  def profile?
+    @user == record
+  end
+
   private
 
   def can_manage_admin?

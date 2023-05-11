@@ -4,6 +4,8 @@ class Admin < ApplicationRecord
   before_save { self.email = email.downcase }
   before_save { self.phone = phone.to_s }
 
+  mount_uploader :avatar, AvatarUploader
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -17,5 +19,13 @@ class Admin < ApplicationRecord
 
   def active_for_authentication?
     super && active?
+  end
+
+  def avatar_medium_url
+    avatar.url(:medium)
+  end
+
+  def avatar_small_url
+    avatar.url(:small)
   end
 end
