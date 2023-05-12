@@ -8,7 +8,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     address { Faker::Address.state }
     status { ['active', 'inactive'].sample }
-    gender { ['male', 'flame'].sample }
+    gender { ['male', 'female'].sample }
     password { Faker::Internet.password(min_length: 6, max_length: 128) }
   end
 end

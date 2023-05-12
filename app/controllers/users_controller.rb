@@ -6,8 +6,16 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb 'Home', :administrator_root_path
+  add_breadcrumb 'Users', :users_path
+  
   def index
-    @users = User.all.paginate(page: params[:page], per_page: 10)
+    @users = User.all
+      if params[:search].present?
+        @users = @users.where("CONCAT(first_name, ' ', last_name) LIKE ? OR email LIKE ?",
+                                "%#{params[:search]}%", "%#{params[:search]}%")
+      end
+    @users = @users.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -35,13 +43,9 @@ class UsersController < ApplicationController
 
   def update
     add_breadcrumb 'Edit User'
-    if @user.update(admin_params)
+    if @user.update(user_params)
       flash[:success] = I18n.t('flash.user.success.update')
-      if current_user == @user
-        redirect_to profile_users_path
-      else
-        redirect_to users_path
-      end
+      redirect_to user_path(@user)
     else
       render 'edit'
     end
@@ -55,10 +59,13 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone, :role, :status, :avatar, :gender, :password, :address)
+    permit_params = params.require(:user).permit(:first_name, :last_name, :email, :phone, :gender, :status, :avatar, :address)
+    permit_params = permit_params.merge(password: params[:user][:password]) if params[:user][:password].present?
+    permit_params
   end
 
   def set_user
     @user = User.find(params[:id])
   end
 end
+

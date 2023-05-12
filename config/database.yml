@@ -5,18 +5,18 @@ default: &default
 
 development:
   <<: *default
-  database: beauty_care_development1
+  database: beauty_care_development
   username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'camtu1604' } %>
 
 test:
   <<: *default
-  database: beauty_care_test1
+  database: beauty_care_test
   username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'camtu1604' } %>
 
 production:
   <<: *default
-  database: beauty_care_production1
+  database: beauty_care_production
   username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'camtu1604' } %>

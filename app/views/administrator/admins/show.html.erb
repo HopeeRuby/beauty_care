@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <%= render partial: 'administrator/shared/partials/page_title' %>
+  <%= render partial: 'administrator/shared/partials/page_title', locals: { obj: @admin.model_name.name } %>
   <section class="bg-light">
     <div>
       <div class="row">
