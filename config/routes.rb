@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: 'user'
   devise_for :admins, path: 'administrator', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', edit: 'admin/edit' }
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
