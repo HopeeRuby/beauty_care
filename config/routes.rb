@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :categories
+  resources :products
+  resources :product_categories
 end

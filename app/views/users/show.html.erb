@@ -9,9 +9,9 @@
               <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0"> 
                   <% if @user.avatar.present? %>
-                    <%= image_tag(@user.avatar.url(:medium), alt: "User", :class => "img_tag rounded-circle img-thumbnail") %>
+                  <%= image_tag(@user.avatar.url(:medium), alt: "User", :class => "img_tag rounded-circle img-thumbnail") %>
                   <% else %>
-                    <%= image_tag(@user.avatar.default_url(:medium), alt: "User", :class => "img_tag rounded-circle img-thumbnail") %>
+                  <%= image_tag(@user.avatar.default_url(:medium), alt: "User", :class => "img_tag rounded-circle img-thumbnail") %>
                   <% end %>
                 </div>
                 <div class="col-lg-6 px-xl-10">
