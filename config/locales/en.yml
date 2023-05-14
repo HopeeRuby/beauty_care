@@ -42,7 +42,7 @@ en:
         create: 'Successfully created user account' 
         update: 'Successfully updated user account'
         update_password: 'Successfully updated your password, please login with the new one'
-    category:
+    product_category:
       success:
         create: 'Successfully created category' 
         update: 'Successfully updated category'

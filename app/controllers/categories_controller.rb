@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-class CategoriesController < ApplicationController
+class ProductCategoriesController < ApplicationController
   include BreadcrumbsOnRails::ActionController
 
-  before_action :set_category, only: %i[show edit update destroy]
+  before_action :set_product_category, only: %i[show edit update destroy]
 
   add_breadcrumb 'Home', :administrator_root_path
-  add_breadcrumb 'Categories', :categories_path
+  add_breadcrumb 'Product_Categories', :product_categories_path
 
   def index
-    @categories = Category.all
+    @product_categories = ProductCategory.all
     if params[:search].present?
-      @categories = @categories.where('title LIKE ? OR description LIKE ?',
+      @product_categories = @product_categories.where('title LIKE ? OR description LIKE ?',
                                       "%#{params[:search]}%", "%#{params[:search]}%")
     end
-    @categories = @categories.paginate(page: params[:page], per_page: 10)
+    @product_categories = @product_categories.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -22,8 +22,8 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    add_breadcrumb 'Add new category'
-    @category = Category.new
+    add_breadcrumb 'Add new product_category'
+    @product_categories = ProductCategory.new
   end
 
   def edit
@@ -31,10 +31,10 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
-    if @category.save
-      flash[:success] = I18n.t('flash.category.success.create')
-      redirect_to categories_path
+    @product_category = ProductCategory.new(category_params)
+    if @product_category.save
+      flash[:success] = I18n.t('flash.product_category.success.create')
+      redirect_to product_categories_path
     else
       render 'new'
     end
@@ -42,31 +42,31 @@ class CategoriesController < ApplicationController
 
   def update
     add_breadcrumb 'Edit category'
-    if @category.update(category_params)
-      flash[:success] = I18n.t('flash.category.success.update')
-      redirect_to category_path(@category)
+    if @product_category.update(category_params)
+      flash[:success] = I18n.t('flash.product_category.success.update')
+      redirect_to product_category_path(@product_category)
     else
       render 'edit'
     end
   end
 
   def destroy
-    if @category.products.empty?
-      @category.destroy
-      flash[:success] = I18n.t('flash.category.success.destroy')
+    if @product_category.products.empty?
+      @product_category.destroy
+      flash[:success] = I18n.t('flash.product_category.success.destroy')
     else
-      flash[:alert] = I18n.t('flash.category.fail.destroy')
+      flash[:alert] = I18n.t('flash.product_category.fail.destroy')
     end
-    redirect_to categories_path
+    redirect_to product_categories_path
   end
 
   private
 
-  def set_category
-    @category = Category.find(params[:id])
+  def set_product_category
+    @product_category = ProductCategory.find(params[:id])
   end
 
-  def category_params
-    params.require(:category).permit(:title, :description)
+  def product_category_params
+    params.require(:product_category).permit(:name, :description)
   end
 end
