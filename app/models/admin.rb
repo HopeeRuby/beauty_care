@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin < ApplicationRecord
-  has_many :users
+  has_many :users, dependent: nil
   before_save { self.email = email.downcase }
   before_save { self.phone = phone.to_s }
 

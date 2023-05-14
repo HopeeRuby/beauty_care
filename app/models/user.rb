@@ -15,8 +15,8 @@ class User < ApplicationRecord
   validates :phone, presence: true
   validates :phone, format: { with: /\A[0-9+]+\z/ }
   validates :address, presence: true
-  enum status: {active: 0, inactive: 1}
-  enum gender: {male: 0, female: 1}
+  enum status: { active: 0, inactive: 1 }
+  enum gender: { male: 0, female: 1 }
 
   def avatar_medium_url
     avatar.url(:medium)

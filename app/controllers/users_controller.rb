@@ -4,17 +4,16 @@ class UsersController < ApplicationController
   include BreadcrumbsOnRails::ActionController
   layout 'admin/application'
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user, only: %i[show edit update destroy]
   add_breadcrumb 'Home', :administrator_root_path
   add_breadcrumb 'Users', :users_path
-  
+
   def index
     @users = User.all
-      if params[:search].present?
-        @users = @users.where("CONCAT(first_name, ' ', last_name) LIKE ? OR email LIKE ?",
-                                "%#{params[:search]}%", "%#{params[:search]}%")
-      end
+    if params[:search].present?
+      @users = @users.where("CONCAT(first_name, ' ', last_name) LIKE ? OR email LIKE ?",
+                            "%#{params[:search]}%", "%#{params[:search]}%")
+    end
     @users = @users.paginate(page: params[:page], per_page: 10)
   end
 
@@ -59,7 +58,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    permit_params = params.require(:user).permit(:first_name, :last_name, :email, :phone, :gender, :status, :avatar, :address)
+    permit_params = params.require(:user).permit(:first_name, :last_name, :email, :phone,
+                                                 :gender, :status, :avatar, :address)
     permit_params = permit_params.merge(password: params[:user][:password]) if params[:user][:password].present?
     permit_params
   end
@@ -68,4 +68,3 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 end
-
