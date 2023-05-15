@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 <% end %>
 <div class="container-fluid">
-  <%= render partial: 'administrator/shared/partials/page_title', locals: { obj: 'Product Category' } %>
+  <%= render partial: 'shared/partials/page_title', locals: { obj: 'Product Category' } %>
   <div class="row">
     <div class="col-12">
       <div class="card">
@@ -26,12 +26,12 @@
             <div id="products-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
               <div class="row">
                 <div class="col-sm-12">
-                  <table class="table table-centered table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline" id="products-datatable" role="grid" aria-describedby="products-datatable_info" style="width: 1479px;">
-                    <thead>
+                  <table class="table table-centered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" id="products-datatable" role="grid" aria-describedby="products-datatable_info" style="width: 1479px;">
+                    <thead class="table-light">
                       <tr role="row">
                         <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 86.8px;" aria-label="STT">Index</th>
-                        <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 86.8px;" aria-label="Image"></th>
-                        <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 172.8px;" aria-label="Name">Name</th>
+                        <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 0.8px; text-align: end;" aria-label="Image">Category</th>
+                        <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 172.8px;" aria-label="Name"></th>
                         <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 248.8px;" aria-label="Description">Description</th>
                         <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 156.8px;" aria-label="Status">Status</th>
                         <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 140.8px;" aria-sort="ascending" aria-label="Create Date">Create Date</th>
@@ -44,9 +44,9 @@
                         <td><%= create_index params[:page], index, 10 %></td>
                         <td>
                           <% if product_category.image.present? %>
-                            <%= image_tag(product_category.image_small_url, alt: "Product Category", class: "img_tag me-2 rounded-circle") %>
+                            <%= image_tag(product_category.image_small_url, alt: "Product Category", class: "img_tag me-2 rounded") %>
                           <% else %>
-                            <%= image_tag(product_category.image.default_url(:small), alt: "Product Category", class: "img_tag me-2 rounded-circle") %>
+                            <%= image_tag(product_category.image.default_url(:small), alt: "Product Category", class: "img_tag me-2 rounded") %>
                           <% end %>
                         </td>
                         <td><%= link_to(products_path) do %><% product_category.name %><% end %></td>
@@ -55,7 +55,7 @@
                           <% if product_category.active? %>
                             <span class="badge badge-success-lighten">active</span>
                           <% else %>
-                            <span class="badge badge-danger-lighten">deactive</span>
+                            <span class="badge badge-danger-lighten">inactive</span>
                           <% end %>
                         </td>
                         <td><%= product_category.created_at.strftime("%m/%d/%Y") %></td>

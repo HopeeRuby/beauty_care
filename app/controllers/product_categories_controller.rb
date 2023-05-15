@@ -7,7 +7,7 @@ class ProductCategoriesController < ApplicationController
   before_action :set_product_category, only: %i[show edit update destroy]
 
   add_breadcrumb 'Home', :administrator_root_path
-  add_breadcrumb 'Product_Categories', :product_categories_path
+  add_breadcrumb 'Product Categories', :product_categories_path
 
   def index
     @product_categories = ProductCategory.all
@@ -23,7 +23,7 @@ class ProductCategoriesController < ApplicationController
   end
 
   def new
-    add_breadcrumb 'Add new product_category'
+    add_breadcrumb 'Add new product category'
     @product_category = ProductCategory.new
   end
 

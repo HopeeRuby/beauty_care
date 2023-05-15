@@ -61,7 +61,7 @@ class ProductCategoryImageUploader < CarrierWave::Uploader::Base
   def default_url(version_name = :small_or_medium)
     version = version_name == :small_or_medium ? %i[small medium] : version_name
     ActionController::Base.helpers.asset_path(
-      "fallback_product_category/#{[version, 'default.png'].flatten.compact.join('_')}"
+      "fallback_product_category/#{[version, 'default.jpg'].flatten.compact.join('_')}"
     )
   end
 

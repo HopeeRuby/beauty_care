@@ -18,14 +18,6 @@ include FactoryBot::Syntax::Methods
 #   create(:user)
 # end
 
-5.times do 
-  create(:product_category)
-end
-
-5.times do 
-  create(:product)
-end
-
 5.times do
   product_category = FactoryBot.create(:product_category)
   5.times do

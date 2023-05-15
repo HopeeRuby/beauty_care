@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_14_162759) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_035324) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_162759) do
     t.string "name", default: ""
     t.string "description", default: ""
     t.string "image"
-    t.string "status", default: "0"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_162759) do
     t.decimal "price", precision: 10
     t.integer "quantity"
     t.string "images"
-    t.string "status", default: "0"
+    t.integer "status", default: 0
     t.bigint "product_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

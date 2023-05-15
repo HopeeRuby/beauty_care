@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 <% end %>
 <div class="container-fluid">
-  <%= render partial: 'administrator/shared/partials/page_title', locals: { obj: @users.model_name.name } %>
+  <%= render partial: 'shared/partials/page_title', locals: { obj: @users.model_name.name } %>
   <div class="row">
     <div class="col-12">
       <div class="card">
@@ -26,8 +26,8 @@
             <div id="products-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
               <div class="row">
                 <div class="col-sm-12">
-                  <table class="table table-centered table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline" id="products-datatable" role="grid" aria-describedby="products-datatable_info" style="width: 1479px;">
-                    <thead>
+                  <table class="table table-centered dt-responsive nowrap w-100 dataTable no-footer dtr-inline" id="products-datatable" role="grid" aria-describedby="products-datatable_info" style="width: 1479px;">
+                    <thead class="table-light">
                       <tr role="row">
                         <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 237.8px;" aria-label="STT">Index</th>
                         <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 86.8px;" aria-label="Avatar"></th>
