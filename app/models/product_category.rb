@@ -1,17 +1,20 @@
-class ProductCategory < ApplicationRecord
-	has_many :products
+# frozen_string_literal: true
 
-	validates :name, presence: true
+class ProductCategory < ApplicationRecord
+  has_many :products, dependent: :destroy
+
+  mount_uploader :image, ProductCategoryImageUploader
+
+  validates :name, presence: true
   validates :description, presence: true
 
-	enum status: { active: 0, deactive: 1 }
+  enum status: { active: 0, inactive: 1 }
 
-	def avatar_medium_url
+  def image_medium_url
     image.url(:medium)
   end
 
-  def avatar_small_url
+  def image_small_url
     image.url(:small)
   end
-
 end

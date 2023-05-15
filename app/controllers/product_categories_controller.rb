@@ -2,6 +2,7 @@
 
 class ProductCategoriesController < ApplicationController
   include BreadcrumbsOnRails::ActionController
+  layout 'admin/application'
 
   before_action :set_product_category, only: %i[show edit update destroy]
 
@@ -11,8 +12,8 @@ class ProductCategoriesController < ApplicationController
   def index
     @product_categories = ProductCategory.all
     if params[:search].present?
-      @product_categories = @product_categories.where('title LIKE ? OR description LIKE ?',
-                                      "%#{params[:search]}%", "%#{params[:search]}%")
+      @product_categories = @product_categories.where('name LIKE ? OR description LIKE ?',
+                                                      "%#{params[:search]}%", "%#{params[:search]}%")
     end
     @product_categories = @product_categories.paginate(page: params[:page], per_page: 10)
   end
@@ -23,7 +24,7 @@ class ProductCategoriesController < ApplicationController
 
   def new
     add_breadcrumb 'Add new product_category'
-    @product_categories = ProductCategory.new
+    @product_category = ProductCategory.new
   end
 
   def edit
@@ -31,7 +32,7 @@ class ProductCategoriesController < ApplicationController
   end
 
   def create
-    @product_category = ProductCategory.new(category_params)
+    @product_category = ProductCategory.new(product_category_params)
     if @product_category.save
       flash[:success] = I18n.t('flash.product_category.success.create')
       redirect_to product_categories_path
@@ -42,9 +43,9 @@ class ProductCategoriesController < ApplicationController
 
   def update
     add_breadcrumb 'Edit category'
-    if @product_category.update(category_params)
+    if @product_category.update(product_category_params)
       flash[:success] = I18n.t('flash.product_category.success.update')
-      redirect_to product_category_path(@product_category)
+      redirect_to product_categories_path
     else
       render 'edit'
     end
@@ -67,6 +68,6 @@ class ProductCategoriesController < ApplicationController
   end
 
   def product_category_params
-    params.require(:product_category).permit(:name, :description)
+    params.require(:product_category).permit(:name, :description, :status, :image)
   end
 end
