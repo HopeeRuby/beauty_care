@@ -1,0 +1,91 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="account-settings">
+          <div class="user-profile">
+            <div class="user-avatar">
+              <% if @user.avatar.present? %>
+                <%= image_tag(@user.avatar.url(:medium), alt: "User", :class => "img_tag rounded-circle img-thumbnail") %>
+              <% else %>
+                <%= image_tag(@user.avatar.default_url(:medium), alt: "User", :class => "img_tag rounded-circle img-thumbnail") %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= form_for @user, url: url, method: method do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h6 class="mb-2 text-primary">User Details</h6>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :first_name, "First Name" %> <%= f.text_field :first_name, class: "form-control", id: "firstName", placeholder: "Enter first name" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :last_name, "Last Name" %> <%= f.text_field :last_name, class: "form-control", id: "lastName", placeholder: "Enter last name" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :email, "Email" %> <%= f.email_field :email, class: "form-control", id: "eMail", placeholder: "Enter email ID" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :phone, "Phone" %> <%= f.text_field :phone, class: "form-control", id: "phone", placeholder: "Enter phone number" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :address, "Address" %> <%= f.text_field :address, class: "form-control", id: "address", placeholder: "Enter address" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group">
+              <%= f.label :avatar, "Avatar" %>
+              <%= f.file_field :avatar, class: "form-control", id: "avatar" %>
+            </div>
+          </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <%= f.label :status, "Status" %>
+                <%= f.select :status, options_for_select([['Active', 'active'], ['Inactive', 'inactive']], f.object.status == 'inactive' ? { selected: 'inactive' } : {} ), {}, class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <%= f.label :gender, "Gender" %>
+                <%= f.select :gender, options_for_select([['Male', 'male'], ['Female', 'female']], f.object.gender == 'male' ? { selected: 'male' } : {} ), {}, class: "form-control" %>
+              </div>
+            </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group"><%= f.label :password, "Password" %> <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "password", placeholder: "Enter Password" %></div>
+              </div>
+        </div>
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="text-right">
+              <%= f.submit method == :post ? 'Create' : 'Update', class: "btn btn-primary" %>
+                <%= link_to "Cancel", users_path, class: "btn btn-secondary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

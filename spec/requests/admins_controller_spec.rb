@@ -36,7 +36,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
 
       it 'renders access_denied layout' do
         get :index
-        expect(response).to render_template('layouts/access_denied')
+        expect(response).to render_template('access_denied')
       end
     end
   end
@@ -65,7 +65,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
 
       it 'renders access_denied layout' do
         get :show, params: { id: admin_customer_service.id }
-        expect(response).to render_template('layouts/access_denied')
+        expect(response).to render_template('access_denied')
       end
     end
   end
@@ -89,7 +89,7 @@ RSpec.describe Administrator::AdminsController, type: :controller do
 
       it 'renders access_denied layout' do
         get :new
-        expect(response).to render_template('layouts/access_denied')
+        expect(response).to render_template('access_denied')
       end
     end
   end
@@ -111,9 +111,9 @@ RSpec.describe Administrator::AdminsController, type: :controller do
         sign_in admin_customer_service
       end
 
-      it 'renders access_denied layout' do
+      it 'renders access_denied template' do
         get :edit, params: { id: admin_customer_service.id }
-        expect(response).to render_template('layouts/access_denied')
+        expect(response).to render_template('access_denied')
       end
     end
   end
@@ -177,15 +177,150 @@ RSpec.describe Administrator::AdminsController, type: :controller do
         expect(admin.first_name).to eq('Anh')
       end
 
-      it 'redirects to the admin' do
+      it 'redirects to the profile' do
         put :update, params: { id: admin.id, admin: { first_name: 'Anh' } }
-        expect(response).to redirect_to(administrator_admin_path(admin))
+        expect(response).to redirect_to(profile_administrator_admins_path)
+      end
+
+      it 'redirects to the index' do
+        put :update, params: { id: admin_customer_service.id, admin: { first_name: 'Anh' } }
+        expect(response).to redirect_to(administrator_admins_path)
       end
     end
 
     context 'when login as an customer_service role' do
       before(:each) do
         sign_in admin_customer_service
+      end
+
+      it 'updates the admin_customer_service' do
+        put :update, params: { id: admin_customer_service.id, admin: { first_name: 'Anh' } }
+        admin_customer_service.reload
+        expect(admin_customer_service.first_name).to eq('Anh')
+      end
+
+      it 'redirects to the profile' do
+        put :update, params: { id: admin_customer_service.id, admin: { first_name: 'Anh' } }
+        expect(response).to redirect_to(profile_administrator_admins_path)
+      end
+    end
+  end
+
+  describe 'GET admins#profile' do
+    context 'when login as an admin role' do
+      before(:each) do
+        sign_in admin
+      end
+  
+      it 'returns http success' do
+        get :profile
+        expect(response).to have_http_status(200)
+      end
+
+      it 'renders profile template' do
+        get :profile
+        expect(response).to render_template('profile')
+      end
+    end
+
+  context 'when login as an customer_service role' do
+      before(:each) do
+        sign_in admin_customer_service
+      end
+
+      it 'returns http success' do
+        get :profile
+        expect(response).to have_http_status(200)
+      end
+
+      it 'renders profile template' do
+        get :profile
+        expect(response).to render_template('profile')
+      end
+    end
+  end
+
+  describe 'GET admins#edit_password' do
+    context 'when login as an admin role' do
+      before(:each) do
+        sign_in admin
+      end
+
+      it 'returns http success code' do
+        get :edit_password, params: { id: admin.id }
+        expect(response).to have_http_status(200)
+      end
+
+      it 'render edit password teamplate' do
+        get :edit_password, params: { id: admin.id }
+        expect(response).to render_template('edit_password')
+      end
+    end
+
+    context 'when login as an customer_service role' do
+      before(:each) do
+        sign_in admin_customer_service
+      end
+
+      it 'returns http success code' do
+        get :edit_password, params: { id: admin_customer_service.id }
+        expect(response).to have_http_status(200)
+      end
+
+      it 'render edit password teamplate' do
+        get :edit_password, params: { id: admin_customer_service.id }
+        expect(response).to render_template('edit_password')
+      end
+    end
+  end
+
+  describe 'PATCH admins#change_password' do
+    context 'when login as an admin role' do
+      before(:each) do
+        sign_in admin
+      end
+
+      it 'updates its password' do
+        patch :change_password, params: { id: admin.id, admin: {
+          current_password: admin.password,
+          password: '123456',
+          password_confirmation: '123456'  } }
+          admin.reload
+        expect(admin.valid_password?('123456')).to be_truthy
+      end
+
+      it 'signs out to the login page' do
+        patch :change_password, params: { id: admin.id, admin: {
+          current_password: admin.password,
+          password: '123456',
+          password_confirmation: '123456'  } }
+          admin.reload
+        expect(response).to redirect_to(new_admin_session_path)
+      end
+      
+    end
+
+    context 'when login as an customer_service role' do
+      before(:each) do
+        sign_in admin_customer_service
+      end
+
+      it 'updates its password' do
+        patch :change_password, params: { id: admin_customer_service.id, admin: {
+          current_password: admin_customer_service.password,
+          password: '123456',
+          password_confirmation: '123456'  } }
+          admin_customer_service.reload
+        expect(admin_customer_service.valid_password?('123456')).to be_truthy
+      end
+
+      it 'signs out to the login page' do
+        patch :change_password, params: { id: admin_customer_service.id, admin: {
+          current_password: admin_customer_service.password,
+          password: '123456',
+          password_confirmation: '123456'  } }
+          admin_customer_service.reload
+        expect(response).to redirect_to(new_admin_session_path)
       end
     end
   end
