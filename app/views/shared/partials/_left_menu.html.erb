@@ -1,4 +1,3 @@
-
 <!-- Left sidebar start -->
 <div class="leftside-menu">
   <!-- LOGO -->
@@ -29,16 +28,25 @@
         <span> Dashboards </span>
         </a>
       </li>
-      <li class="side-nav-item">
-        <a href="<%= administrator_admins_path %>" class="side-nav-link">
-          <i class="uil-streering"></i>
-          <span> Admins </span>
-          <% if defined?(current_admin) && current_admin.admin? %>
-      <li>
-      <%= link_to '', administrator_admins_path %>
-      </li>
+      <% if defined?(current_admin) && current_admin.admin? %>
+        <li class="side-nav-item">
+          <a href="<%= administrator_admins_path %>" class="side-nav-link">
+            <i class="uil-streering"></i>
+            <span> Admins </span>
+          </a>
+        </li>
       <% end %>
-      </a>
+      <li class="side-nav-item">
+          <a href="<%= users_path %>" class="side-nav-link">
+            <i class="uil-streering"></i>
+            <span> Users </span>
+          </a>
+      </li>
+      <li class="side-nav-item">
+          <a href="<%= product_categories_path %>" class="side-nav-link">
+            <i class="uil-store"></i>
+            <span> Categories </span>
+          </a>
       </li>   
     </ul>
     <!-- End Sidebar -->

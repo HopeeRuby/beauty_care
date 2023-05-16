@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+      </div>
+    </div>
+  </div>
+  <%= form_for @product_category, url: url, method: method do |f| %>
+    <% if @product_category.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @product_category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h6 class="mb-2 text-primary">Product Category Details</h6>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :name, "Name" %> <%= f.text_field :name, class: "form-control", id: "name", placeholder: "Enter name" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :description, "Description" %> <%= f.text_field :description, class: "form-control", id: "description", placeholder: "Enter description" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group">
+              <%= f.label :image, "Image" %>
+              <%= f.file_field :image, class: "form-control", id: "image" %>
+            </div>
+          </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <%= f.label :status, "Status" %>
+                <%= f.select :status, options_for_select([['Active', 'active'], ['Deactive', 'deactive']], f.object.status == 'deactive' ? { selected: 'deactive' } : {} ), {}, class: "form-control" %>
+              </div>
+            </div>
+        </div>
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="text-right">
+              <%= f.submit method == :post ? 'Create' : 'Update', class: "btn btn-primary" %>
+                <%= link_to "Cancel", product_categories_path, class: "btn btn-secondary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

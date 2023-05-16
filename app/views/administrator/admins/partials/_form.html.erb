@@ -10,7 +10,13 @@
       <div class="card-body">
         <div class="account-settings">
           <div class="user-profile">
-            <div class="user-avatar"><%= image_tag("avatar7.png", alt: "Admin") %></div>
+            <div class="user-avatar">
+              <% if @admin.avatar.present? %>
+                <%= image_tag(@admin.avatar.url(:medium), alt: "Admin", :class => "img_tag rounded-circle img-thumbnail") %>
+              <% else %>
+                <%= image_tag(@admin.avatar.default_url(:medium), alt: "Admin", :class => "img_tag rounded-circle img-thumbnail") %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -45,23 +51,41 @@
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="form-group"><%= f.label :phone, "Phone" %> <%= f.text_field :phone, class: "form-control", id: "phone", placeholder: "Enter phone number" %></div>
           </div>
-        </div>
-        <div class="row gutters">
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <div class="form-group"><%= f.label :password, "Password" %> <%= f.password_field :password, class: "form-control", id: "password", placeholder: "Enter Password" %></div>
+            <div class="form-group">
+              <%= f.label :avatar, "Avatar" %>
+              <%= f.file_field :avatar, class: "form-control", id: "avatar" %>
+            </div>
           </div>
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <div class="form-group"><%= f.label :status, "Status" %> <%= f.select :status, options_for_select([['Active', 'active'], ['Inactive', 'inactive']]), {}, class: "form-control" %></div>
-          </div>
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <div class="form-group"><%= f.label :role, "Role" %> <%= f.select :role, options_for_select([['Admin', 'admin'], ['Customer Service', 'customer_service']]), {}, class: "form-control" %></div>
-          </div>
+          <% if current_admin.admin? %>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <%= f.label :status, "Status" %>
+                <%= f.select :status, options_for_select([['Active', 'active'], ['Inactive', 'inactive']], f.object.status == 'inactive' ? { selected: 'inactive' } : {} ), {}, class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <%= f.label :role, "Role" %>
+                <%= f.select :role, options_for_select([['Admin', 'admin'], ['Customer Service', 'customer_service']], f.object.role == 'customer_service' ? { selected: 'customer_service' } : {} ), {}, class: "form-control" %>
+              </div>
+            </div>
+            <% if current_admin != @admin %>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group"><%= f.label :password, "Password" %> <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "password", placeholder: "Enter Password" %></div>
+              </div>
+            <% end %>
+            <% end %>
         </div>
         <div class="row gutters">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="text-right">
-              <%= f.submit method == :post ? 'Create' : 'Update', class: "btn btn-primary" %> 
-              <%= link_to "Cancel", administrator_admins_path, class: "btn btn-secondary" %>
+              <%= f.submit method == :post ? 'Create' : 'Update', class: "btn btn-primary" %>
+              <% if current_admin == @admin%>
+                <%= link_to "Cancel", profile_administrator_admins_path, class: "btn btn-secondary" %>
+              <% else %>
+                <%= link_to "Cancel", administrator_admins_path, class: "btn btn-secondary" %>
+              <% end %>
             </div>
           </div>
         </div>
