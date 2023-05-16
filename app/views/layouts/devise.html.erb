@@ -13,6 +13,20 @@
       <%= javascript_include_tag "admin/application", 'data-turbolinks-track': 'reload' %>
    </head>
    <body>
+    <% if admin_signed_in? %>
+      <div class="wrapper">
+        <%= render partial: '/shared/partials/navbar'%>
+        <%= render partial: '/shared/partials/left_menu'%>
+        <%= render partial: '/shared/partials/footer'%>
+      </div>
+      <div class="content-page">
+        <div class="content">
+          <%= yield %>
+        </div>
+      </div>  
+    <% else %>
       <%= yield %>
+    <% end %>  
+  </body>
    </body>
 </html>

@@ -1,0 +1,4 @@
+<div class="container-fluid">
+  <%= render partial: 'administrator/shared/partials/page_title', locals: { obj: @user.model_name.name } %>
+</div>
+<%= render partial: 'users/partials/form', locals: { method: :put, url: user_path(@user) } %>

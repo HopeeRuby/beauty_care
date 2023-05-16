@@ -23,5 +23,6 @@ module BeautyCare
     config.sass.preferred_syntax = :scss
     config.sass.line_comments = false
     config.sass.cache = false
+    config.test_mode = ENV['RAILS_ENV'] == 'development'
   end
 end

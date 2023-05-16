@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'factory_bot'
 require 'faker'
 include FactoryBot::Syntax::Methods
@@ -11,4 +12,8 @@ include FactoryBot::Syntax::Methods
 #   Character.create(name: "Luke", movie: movies.first)
 5.times do 
   create(:admin)
+end
+
+20.times do 
+  create(:user)
 end

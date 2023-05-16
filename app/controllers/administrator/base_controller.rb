@@ -11,7 +11,7 @@ module Administrator
     private
 
     def admin_not_authorized
-      render layout: 'access_denied'
+      render 'access_denied', layout: false
     end
 
     def pundit_user

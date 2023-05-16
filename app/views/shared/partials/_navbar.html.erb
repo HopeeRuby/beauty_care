@@ -101,14 +101,18 @@
       </a>
     </li>
     <li class="dropdown notification-list">
-      <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-      <span class="account-user-avatar"> 
-      <%= image_tag("users/avatar_1.jpg", alt: "user-image", class: "rounded-circle") %>
-      </span>
-      <span>
-      <span class="account-user-name"></span>
-      <span class="account-position"></span>
-      </span>
+      <a class="nav-link nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+        <span class="account-user-avatar"> 
+        <% if current_admin.avatar.present? %>
+          <%= image_tag(current_admin.avatar.url(:small), alt: "Admin", :class => "img_tag me-2 rounded-circle") %>
+        <% else %>
+          <%= image_tag(current_admin.avatar.default_url(:small), alt: "Admin", :class => "img_tag me-2 rounded-circle") %>
+        <% end %>
+        </span>
+        <span class = 'd-lg-flex flex-column d-none'>
+          <h5 class="my-0 admin-size account-user-name"><%= "#{current_admin.first_name}" + " " + "#{current_admin.last_name}" %></h5>
+          <h6 class="my-0 fw-normal account-position"><%= current_admin.role%></h6>
+        </span>
       </a>
       <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
         <!-- item-->
@@ -116,9 +120,10 @@
           <h6 class="text-overflow m-0">Welcome !</h6>
         </div>
         <!-- item-->
-        <a href="javascript:void(0);" class="dropdown-item notify-item">
-        <i class="mdi mdi-account-circle me-1"></i>
-        <span>My Account</span>
+        <a href="<%= administrator_admins_path %>" class="dropdown-item notify-item">
+        <span>
+        <%= link_to '  My Account', profile_administrator_admins_path, class: "mdi mdi-account-circle me-1 dropdown-item notify-item" %>
+        </span>
         </a>
         <!-- item-->
         <a href="javascript:void(0);" class="dropdown-item notify-item">
@@ -137,9 +142,9 @@
         </a>
         <!-- item-->
         <a href="javascript:void(0);">
-          <span>
-            <%= link_to "Logout", destroy_admin_session_path, class: "mdi mdi-logout me-1  dropdown-item notify-item" %>
-          </span>
+        <span>
+        <%= link_to " Logout", destroy_admin_session_path, class: "mdi mdi-logout me-1  dropdown-item notify-item" %>
+        </span>
         </a>
       </div>
     </li>
